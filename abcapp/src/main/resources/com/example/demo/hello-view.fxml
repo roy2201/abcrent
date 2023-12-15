@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.demo.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  <Label text="Email" layoutX="50.0" layoutY="50.0"/>
+  <Label text="Password" layoutX="50.0" layoutY="100.0"/>
+
+  <TextField fx:id="emailField" promptText="Email" layoutX="150.0" layoutY="50.0"/>
+  <PasswordField fx:id="passwordField" promptText="Password" layoutX="150.0" layoutY="100.0"/>
+
+  <Button text="Login" layoutX="150.0" layoutY="150.0"/>
+
+  <Label text="Don't have an account? Sign up!" layoutX="150.0" layoutY="200.0"/>
+  <Button text="Sign Up" layoutX="150.0" layoutY="250.0"/>
+
+  <Label text="Login as Admin" layoutX="150.0" layoutY="300.0"/>
+  <Button text="Admin Login" layoutX="150.0" layoutY="350.0"/>
+</Pane>
