@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="483.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdvancedControlsController">
+   <children>
+      <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="483.0" prefWidth="192.0" style="-fx-background-color: #405B6D;">
+         <children>
+            <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="66.0" prefWidth="187.0" style="-fx-background-color: #405B6D;" text="Manage Cars" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" style="-fx-background-color: #405B6D;" text="Car Insurance" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #405B6D;" text="Advanced Controls" textFill="WHITE" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="66.0" prefWidth="185.0" style="-fx-background-color: #405B6D;" text="Manage Users" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="66.0" prefWidth="216.0" style="-fx-background-color: #405B6D;" text="Manage Refunds" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <TableView layoutX="192.0" layoutY="227.0" prefHeight="254.0" prefWidth="614.0" />
+      <HBox layoutX="221.0" layoutY="51.0" prefHeight="126.0" prefWidth="555.0" style="-fx-spacing: 20;">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="163.0" style="-fx-spacing: 10;">
+               <children>
+                  <Label text="Rented Between" />
+                  <TextField promptText="YYYY-MM-DD" />
+                  <TextField promptText="YYYY-MM-DD" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #405B6D;" text="Check" textFill="WHITE" />
+               </children>
+            </VBox>
+            <VBox prefHeight="158.0" prefWidth="163.0" style="-fx-spacing: 10;">
+               <children>
+                  <Label text="Cars Made in Total" />
+                  <TextField promptText="Less Than" />
+                  <TextField promptText="Greater Than" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #405B6D;" text="Check" textFill="WHITE" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="163.0" style="-fx-spacing: 10;">
+               <children>
+                  <Label text="Arrived Between" />
+                  <TextField promptText="YYYY-MM-DD" />
+                  <TextField promptText="YYYY-MM-DD" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #405B6D;" text="Check" textFill="WHITE" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
