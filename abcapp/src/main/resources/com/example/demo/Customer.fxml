@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="462.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
-   <VBox alignment="CENTER" layoutY="-4.0" prefHeight="489.0" prefWidth="183.0" style="-fx-spacing: 10; -fx-background-color: #405B6D;">
+<AnchorPane prefHeight="486.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
+   <VBox alignment="CENTER" layoutY="-4.0" prefHeight="490.0" prefWidth="200.0" style="-fx-spacing: 10; -fx-background-color: #405B6D;">
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" prefWidth="167.0" style="-fx-background-radius: 20; -fx-background-color: #405B6D;" text="Browse And Rent" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -39,18 +39,11 @@
          </children>
       </VBox>
    </VBox>
-   <TableView layoutX="183.0" layoutY="144.0" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="534.0" />
-   <VBox alignment="CENTER" layoutX="203.0" prefHeight="130.0" prefWidth="170.0" style="-fx-spacing: 20;">
-      <ComboBox prefWidth="150.0" promptText="Make" />
-      <ComboBox prefHeight="27.0" prefWidth="150.0" promptText="Model" />
+   <TableView fx:id="cars" layoutX="203.0" layoutY="144.0" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="514.0" />
+   <VBox alignment="CENTER" layoutX="233.0" layoutY="14.0" prefHeight="120.0" prefWidth="142.0" style="-fx-spacing: 20;">
+      <ComboBox fx:id="make" maxWidth="1.7976931348623157E308" onAction="#loadMake" prefWidth="150.0" promptText="Make" />
+      <ComboBox fx:id="type" maxWidth="1.7976931348623157E308" onAction="#loadTypes" prefHeight="27.0" prefWidth="150.0" promptText="Type" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewMatches" text="Search !" />
    </VBox>
-   <VBox alignment="CENTER" layoutX="576.0" maxWidth="1.7976931348623157E308" prefHeight="143.0" prefWidth="141.0" style="-fx-background-color: #405B6D; -fx-border-color: #405B6D;">
-      <children>
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #405B6D;" text="Next" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-      </children>
-   </VBox>
+   <Button layoutX="385.0" layoutY="107.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#NextPage" prefHeight="26.0" prefWidth="142.0" text="Next" />
 </AnchorPane>

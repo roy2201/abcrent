@@ -2,6 +2,7 @@ package Models;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Customer {
@@ -14,6 +15,38 @@ public class Customer {
         try {
             Database db = Database.getInstance();
             con = db.connect();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ResultSet loadTypes() {
+        String query = "exec spLoadTypes";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            return ps.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ResultSet loadMake() {
+        String query = "exec spLoadManufacturer";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            return ps.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ResultSet filteredSearchAction(String type, String make) {
+        String query = "exec spViewMatches ?, ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, type);
+            ps.setString(2, make);
+            return ps.executeQuery();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
