@@ -18,6 +18,7 @@ public class AbcRenting extends Application {
     }
 
     public static void main(String[] args) {
+        Object o = new Object();
         launch();
     }
 }

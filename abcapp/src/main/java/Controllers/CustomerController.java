@@ -13,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -39,12 +36,15 @@ public class CustomerController implements Initializable {
     @FXML
     private TableView<?> cars;
 
+    @FXML
+    private Label infoLabel;
 
     Customer customer = new Customer();
 
     UserMetaData userMetaData = new UserMetaData();
 
     private boolean typesLoaded = false, makesLoaded = false;
+
 
 
     @FXML
@@ -64,6 +64,7 @@ public class CustomerController implements Initializable {
         }
     }
 
+
     @FXML
     public void loadMake() {
         if(!makesLoaded) {
@@ -81,6 +82,7 @@ public class CustomerController implements Initializable {
         }
     }
 
+
     @FXML
     public void viewMatches() {
         try (ResultSet rs = customer.filteredSearchAction(type.getValue(),make.getValue())) {
@@ -89,6 +91,7 @@ public class CustomerController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
 
     @SuppressWarnings("all")
     void drawTable(ResultSet rs, TableView tableView) {
@@ -116,22 +119,13 @@ public class CustomerController implements Initializable {
         }
     }
 
+
     @FXML
     void SignOut(ActionEvent event) {
         customer.signOut();
-        try {
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            Stage newStage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(AbcRenting.class.getResource("login.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            newStage.setTitle("Login");
-            newStage.setScene(scene);
-            newStage.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        goToPage(event, "login.fxml", "Login");
     }
+
 
     @FXML
     void NextPage(ActionEvent event) {
@@ -144,23 +138,28 @@ public class CustomerController implements Initializable {
                 System.out.println(userMetaData.getCarId());
             }
         } else {
-            System.out.println("ewww");
+            infoLabel.setText("Please Select a Car");
             return ;
         }
-        //loading the new page (number of days page)
+        goToPage(event, "NbDays.fxml", "How Many Days ?");
+    }
+
+
+    public void goToPage(ActionEvent event, String pageName, String pageTitle) {
         try {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
             Stage newStage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(AbcRenting.class.getResource("nbDays.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AbcRenting.class.getResource(pageName));
             Scene scene = new Scene(fxmlLoader.load());
-            newStage.setTitle("How Many Days ?");
+            newStage.setTitle(pageTitle);
             newStage.setScene(scene);
             newStage.show();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -11,7 +11,7 @@ public class Database {
     private static final Logger logger = Logger.getLogger(Database.class.getName());
     private static final String USERNAME = "sa";
     private static final String PASSWORD = "root123123";
-    private static final String CONN_STR = "jdbc:sqlserver://localhost\\sqlExpress:1433;databaseName=abcRent;"+ "encrypt=true;trustServerCertificate=true";
+    private static final String CONN_STR = "jdbc:sqlserver://localhost\\sqlExpress:1433;databaseName=abcdRent;"+ "encrypt=true;trustServerCertificate=true";
 
     public static Database getInstance() throws SQLException {
         if (databaseInstance == null) {

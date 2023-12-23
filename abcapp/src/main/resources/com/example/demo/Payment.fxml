@@ -21,6 +21,6 @@
       <TextField promptText="CVV" />
       <TextField promptText="Exp Date: YYYY-MM-DD" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #405B6D;" text="Pay" textFill="WHITE" />
-      <Label prefHeight="18.0" prefWidth="211.0" text="Label" />
+      <Label fx:id="infoLabel" prefHeight="18.0" prefWidth="211.0" text="Label" />
    </VBox>
 </AnchorPane>

@@ -32,7 +32,7 @@
             </Button>
          </children>
       </VBox>
-      <TableView layoutX="192.0" layoutY="227.0" prefHeight="254.0" prefWidth="614.0" />
+      <TableView layoutX="192.0" layoutY="198.0" prefHeight="283.0" prefWidth="614.0" />
       <HBox layoutX="221.0" layoutY="51.0" prefHeight="126.0" prefWidth="555.0" style="-fx-spacing: 20;">
          <children>
             <VBox prefHeight="100.0" prefWidth="163.0" style="-fx-spacing: 10;">

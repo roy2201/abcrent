@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     12/18/2023 8:11:11 PM                        */
+/* Created on:     12/23/2023 11:07:11 AM                       */
 /*==============================================================*/
 
 
@@ -34,13 +34,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('CARRENTAL') and o.name = 'FK_CARRENTA_CARRENTAL_REFUNDRE')
-alter table CARRENTAL
-   drop constraint FK_CARRENTA_CARRENTAL_REFUNDRE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('INSURANCE') and o.name = 'FK_INSURANC_INSURANCE_CAR')
 alter table INSURANCE
    drop constraint FK_INSURANC_INSURANCE_CAR
@@ -51,6 +44,13 @@ if exists (select 1
    where r.fkeyid = object_id('LOGINHISTORY') and o.name = 'FK_LOGINHIS_LOGININFO_CUSTOMER')
 alter table LOGINHISTORY
    drop constraint FK_LOGINHIS_LOGININFO_CUSTOMER
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('REFUNDREQUESTS') and o.name = 'FK_REFUNDRE_REFERENCE_CARRENTA')
+alter table REFUNDREQUESTS
+   drop constraint FK_REFUNDRE_REFERENCE_CARRENTA
 go
 
 if exists (select 1
@@ -104,15 +104,6 @@ if exists (select 1
            where  id = object_id('CARPRICING')
             and   type = 'U')
    drop table CARPRICING
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('CARRENTAL')
-            and   name  = 'CARRENTAL3_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index CARRENTAL.CARRENTAL3_FK
 go
 
 if exists (select 1
@@ -222,13 +213,14 @@ go
 /* Table: CAR                                                   */
 /*==============================================================*/
 create table CAR (
-   CARID                int identity(1,1)	 not null,
+   CARID                int identity(1,1)    not null,
    LICENSEPLATE         varchar(20)          null,
    COLOR                varchar(256)         null,
    MANUFACTURER         varchar(256)         null,
    MODEL                varchar(256)         null,
-   TYPE                 varchar(256)         null,
+   [TYPE]               varchar(256)         null,
    MILEAGE              int                  null,
+   ISRENTED             bit                  null,
    constraint PK_CAR primary key (CARID)
 )
 go
@@ -237,11 +229,11 @@ go
 /* Table: CARINOUT                                              */
 /*==============================================================*/
 create table CARINOUT (
-   INOUTID              int identity(1,1)	 not null,
+   INOUTID              int identity(1,1)    not null,
    CARID                int                  not null,
-   ENTRYTIME            datetime             null,
-   EXITTIME             datetime             null,
-   RENTEDSTATUS         bit                  null,
+   ENTRYTIME            date	             null,
+   EXITTIME             date	             null,
+   RENTEDDURATION       int                  null,
    constraint PK_CARINOUT primary key (INOUTID)
 )
 go
@@ -261,8 +253,8 @@ go
 /*==============================================================*/
 create table CARPRICING (
    CARPRICINGID         int identity(1,1)    not null,
-   CARID                int					 not null,
-   EFFECTIVEDATE        datetime             null,
+   CARID                int                  not null,
+   EFFECTIVEDATE        date	             null,
    PRICEPERDAY          float                null,
    constraint PK_CARPRICING primary key (CARPRICINGID)
 )
@@ -282,13 +274,14 @@ go
 /* Table: CARRENTAL                                             */
 /*==============================================================*/
 create table CARRENTAL (
-   CUSTOMERID           int identity(1,1)	 not null,
+   CUSTOMERID           int                  not null,
    CARID                int                  not null,
-   REQUESTID            int                  not null,
-   RENTALID             int                  not null,
-   RENTSTARTDATE        datetime             null,
-   RENTENDDATE          datetime             null,
+   RENTALID             int identity(1,1)    not null,
+   RENTSTARTDATE        date	             null,
+   RENTENDDATE          date	             null,
    ISRETURNED           bit                  null,
+   RETURNEDDATE         date	             null,
+   AMOUNT               float                null,
    constraint PK_CARRENTAL primary key (RENTALID)
 )
 go
@@ -314,23 +307,13 @@ create nonclustered index CARRENTAL2_FK on CARRENTAL (CARID ASC)
 go
 
 /*==============================================================*/
-/* Index: CARRENTAL3_FK                                         */
-/*==============================================================*/
-
-
-
-
-create nonclustered index CARRENTAL3_FK on CARRENTAL (REQUESTID ASC)
-go
-
-/*==============================================================*/
 /* Table: CUSTOMER                                              */
 /*==============================================================*/
 create table CUSTOMER (
    CUSTOMERID           int identity(1,1)    not null,
    FIRSTNAME            varchar(256)         null,
    LASTNAME             varchar(256)         null,
-   ADDRESS              varchar(256)         null,
+   [ADDRESS]            varchar(256)         null,
    EMAIL                varchar(256)         null,
    PASSWORDHASH         varchar(256)         null,
    AGE                  int                  null,
@@ -346,10 +329,10 @@ create table INSURANCE (
    INSURANCEID          int identity(1,1)    not null,
    CARID                int                  not null,
    INSURANCEPROVIDER    varchar(256)         null,
-   INSURANCEPOLICYNUMBER varchar(20)         null,
-   STARTINGDATE         datetime             null,
-   EXPIRYDATE           datetime             null,
-   COST                 float                null,
+   INSURANCEPOLICYNUMBER varchar(20)          null,
+   STARTINGDATE         date	             null,
+   EXPIRYDATE           date	             null,
+   COST                 decimal(18,2)        null,
    constraint PK_INSURANCE primary key (INSURANCEID)
 )
 go
@@ -372,8 +355,7 @@ create table LOGINHISTORY (
    CUSTOMERID           int                  not null,
    LOGINTIME            datetime             null,
    LOGOUTTIME           datetime             null,
-   SESSIONDURATION      int		             null,
-   FAILEDATTEMPTS       int                  null,
+   SESSIONDURATION      int                  null,
    constraint PK_LOGINHISTORY primary key (LOGINID)
 )
 go
@@ -392,10 +374,12 @@ go
 /* Table: REFUNDREQUESTS                                        */
 /*==============================================================*/
 create table REFUNDREQUESTS (
-   REQUESTID            int identity(1,1)    not null,
+   REQUESTID            int  identity(1,1)   not null,
+   RENTALID             int                  null,
    REQUESTDATE          datetime             null,
+   ACCEPTEDDATE			datetime			 null,
    REASON               varchar(512)         null,
-   STATUS               varchar(50)          null,
+   [STATUS]             varchar(50)          null,
    RESOLUTION           varchar(50)          null,
    constraint PK_REFUNDREQUESTS primary key (REQUESTID)
 )
@@ -407,8 +391,8 @@ go
 create table SUBSCRIPTION (
    SUBSCRIPTIONID       int identity(1,1)    not null,
    CUSTOMERID           int                  not null,
-   STATDATE             datetime             null,
-   ENDDATE              datetime             null,
+   STATDATE             date	             null,
+   ENDDATE              date	             null,
    EXPIRED              bit                  null,
    constraint PK_SUBSCRIPTION primary key (SUBSCRIPTIONID)
 )
@@ -428,12 +412,13 @@ go
 /* Table: VISACARD                                              */
 /*==============================================================*/
 create table VISACARD (
-   CARDID               int identity(1,1)    not null,
+   CARDID               int  identity(1,1)   not null,
    CUSTOMERID           int                  not null,
-   CARDHOLDERNAME       char(256)            null,
-   CVV                  char(3)              null,
-   EXPIRATIONDATE       datetime             null,
-   BALANCE              float                null,
+   CARDHOLDERNAME       varchar(256)         null,
+   CARDNUMBER           varchar(16)          null,
+   CVV                  varchar(3)           null,
+   EXPIRATIONDATE       date	             null,
+   BALANCE              decimal(18,2)        null,
    constraint PK_VISACARD primary key (CARDID)
 )
 go
@@ -468,11 +453,6 @@ alter table CARRENTAL
       references CAR (CARID)
 go
 
-alter table CARRENTAL
-   add constraint FK_CARRENTA_CARRENTAL_REFUNDRE foreign key (REQUESTID)
-      references REFUNDREQUESTS (REQUESTID)
-go
-
 alter table INSURANCE
    add constraint FK_INSURANC_INSURANCE_CAR foreign key (CARID)
       references CAR (CARID)
@@ -481,6 +461,11 @@ go
 alter table LOGINHISTORY
    add constraint FK_LOGINHIS_LOGININFO_CUSTOMER foreign key (CUSTOMERID)
       references CUSTOMER (CUSTOMERID)
+go
+
+alter table REFUNDREQUESTS
+   add constraint FK_REFUNDRE_REFERENCE_CARRENTA foreign key (RENTALID)
+      references CARRENTAL (RENTALID)
 go
 
 alter table SUBSCRIPTION
