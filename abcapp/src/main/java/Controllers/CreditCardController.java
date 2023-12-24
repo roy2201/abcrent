@@ -50,7 +50,7 @@ public class CreditCardController {
 
     @FXML
     void back(ActionEvent event) {
-        goToPage(event, "NbDays.fxml", "How Many Days ?");
+        goToPage(event, "Profile.fxml", "Profile");
     }
 
 

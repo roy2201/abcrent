@@ -4,27 +4,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="460.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManageUserController">
-   <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="460.0" prefWidth="192.0" style="-fx-background-color: #405B6D;">
-      <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="66.0" prefWidth="187.0" style="-fx-background-color: #405B6D;" text="Manage Cars" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" style="-fx-background-color: #405B6D;" text="Car Insurance" textFill="WHITE" />
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #405B6D;" text="Advanced Controls" textFill="WHITE" />
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="66.0" prefWidth="185.0" style="-fx-background-color: #405B6D;" text="Manage Users" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="66.0" prefWidth="216.0" style="-fx-background-color: #405B6D;" text="Manage Refunds" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+<AnchorPane prefHeight="460.0" prefWidth="810.0" stylesheets="@admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManageUserController">
+   <TableView layoutX="193.0" layoutY="193.0" prefHeight="293.0" prefWidth="614.0" />
+   <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="487.0" prefWidth="192.0" styleClass="vbox">
+      <children>
+         <Button mnemonicParsing="false" onAction="#ManageCarsPage" text="Manage Cars" />
+         <Button mnemonicParsing="false" onAction="#CarInsurancePage" text="Car Insurance" />
+         <Button mnemonicParsing="false" onAction="#MoreCarControlsPage" text="More Car Controls" />
+         <Button mnemonicParsing="false" onAction="#ManageUsersPage" text="Manage Users" />
+         <Button mnemonicParsing="false" onAction="#ManageRefundsPage" text="Manage Refunds" />
+      </children>
    </VBox>
-   <TableView layoutX="192.0" layoutY="193.0" prefHeight="266.0" prefWidth="615.0" />
 </AnchorPane>

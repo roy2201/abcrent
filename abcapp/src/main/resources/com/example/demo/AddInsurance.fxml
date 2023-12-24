@@ -6,25 +6,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controllers.AddInsuranceController">
-   <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="418.0" prefWidth="192.0"
-         style="-fx-background-color: #405B6D;">
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="66.0" prefWidth="216.0"
-              style="-fx-background-color: #405B6D;" text="&lt; Back" textFill="WHITE">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddInsuranceController">
+   <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="418.0" prefWidth="192.0" styleClass="vbox">
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="66.0" prefWidth="216.0" text="&lt; Back" textFill="WHITE">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </Button>
    </VBox>
-   <VBox alignment="CENTER" layoutX="291.0" layoutY="59.0" prefHeight="279.0" prefWidth="192.0"
-         style="-fx-spacing: 10;">
-      <TextField promptText="Insurance Provider"/>
-      <TextField promptText="Insurance Policy Number"/>
-      <TextField promptText="Starting Date: YYYY-MM-DD"/>
-      <TextField promptText="Expiry Date: YYYY-DD-MM"/>
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #405B6D;"
-              text="Add Insurance" textFill="WHITE"/>
+   <VBox alignment="CENTER" layoutX="291.0" layoutY="59.0" prefHeight="279.0" prefWidth="192.0" style="-fx-spacing: 10;">
+      <TextField promptText="Insurance Provider" />
+      <TextField promptText="Insurance Policy Number" />
+      <TextField promptText="Starting Date: YYYY-MM-DD" />
+      <TextField promptText="Expiry Date: YYYY-DD-MM" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add Insurance" textFill="WHITE" />
    </VBox>
 </AnchorPane>

@@ -160,6 +160,25 @@ public class CustomerController implements Initializable {
         }
     }
 
+    @FXML
+    void BrowsePage(ActionEvent event) {
+        goToPage(event, "Customer.fxml", "Browse Cars");
+    }
+
+    @FXML
+    void CheckRentPage(ActionEvent event) {
+        goToPage(event, "CheckRent.fxml", "Check Your Rent Here");
+    }
+
+    @FXML
+    void Profile(ActionEvent event) {
+        goToPage(event, "Profile.fxml", "Profile");
+    }
+
+    @FXML
+    void RefundPage(ActionEvent event) {
+        goToPage(event, "Refund.fxml", "Refund Here");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

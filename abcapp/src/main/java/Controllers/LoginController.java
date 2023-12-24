@@ -68,6 +68,20 @@ public class LoginController {
         goToPage(event, "SignUp.fxml", "Create New Account");
     }
 
+    @FXML
+    void SuperAdmin(ActionEvent event) {
+        goToPage(event, "Admin.fxml", "Manage Cars");
+    }
+
+    @FXML
+    void UserPage(ActionEvent event) {
+        goToPage(event, "login.fxml", "Login as User");
+    }
+
+    @FXML
+    void Admin(ActionEvent event) {
+        goToPage(event, "Admin.fxml", "ManageCars");
+    }
     public void goToPage(ActionEvent event, String pageName, String pageTitle) {
         try {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
