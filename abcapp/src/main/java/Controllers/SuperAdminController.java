@@ -1,4 +1,4 @@
 package Controllers;
 
-public class SuperAdminController {
+public class SuperAdminController extends Navigation{
 }

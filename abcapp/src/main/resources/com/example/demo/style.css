@@ -3,19 +3,19 @@
     -fx-font-family : 'Open Sans'
 }
 
-.login {
-    -fx-background-color: #888888;
-    -fx-font-family: 'Open Sans Medium';
+.button {
+    -fx-background-color: #555555;
+    -fx-cursor: HAND;
 }
 
 .signup {
-    -fx-text-fill: #000000;
     -fx-background-color: transparent;
+    -fx-text-fill: #000000;
 }
 
 .vbox {
-    -fx-spacing: 10;
-    -fx-background-color:  #888888;
+    -fx-spacing: 15;
+    -fx-background-color:  #555555;
 }
 
 .vbox .button {
@@ -23,4 +23,22 @@
     -fx-text-fill: white;
     -fx-background-color: transparent;
     -fx-font-family: 'Open Sans SemiCondensed Medium';
+}
+
+.vbox .button:hover {
+    -fx-background-color: #333333;
+}
+
+.login:hover {
+    -fx-background-color: #f27f0c;
+}
+
+.signup:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ff0000;
+}
+
+.text-field {
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
 }

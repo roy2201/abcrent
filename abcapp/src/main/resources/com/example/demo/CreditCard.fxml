@@ -22,5 +22,5 @@
       <TextField fx:id="expDate" promptText="Exp Date: YYYY-MM-DD" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCard" text="Add Card" textFill="WHITE" />
    </VBox>
-   <Label fx:id="infoLabel" layoutX="279.0" layoutY="311.0" prefHeight="18.0" prefWidth="211.0" text="Label" />
+   <Label fx:id="infoLabel" layoutX="279.0" layoutY="311.0" prefHeight="18.0" prefWidth="211.0" />
 </AnchorPane>

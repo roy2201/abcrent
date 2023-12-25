@@ -13,10 +13,13 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class SignUpController {
+public class SignUpController extends Navigation{
 
     @FXML
     private Label SignUpResultLabel;
@@ -42,22 +45,11 @@ public class SignUpController {
 
     @FXML
     void BackToHome(ActionEvent event) {
-        try {
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            Stage newStage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(AbcRenting.class.getResource("login.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            newStage.setTitle("Sign In");
-            newStage.setScene(scene);
-            newStage.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        goToPage(event, "login.fxml", "Login");
     }
 
     @FXML
-    void SignUp() throws Exception {
+    void SignUp(ActionEvent event) throws Exception {
         if (!address.getText().isEmpty() && !email.getText().isEmpty() && !password.getText().isEmpty() && !firstName.getText().isEmpty() && !lastName.getText().isEmpty() && isNumeric(age.getText())) {
             boolean res = signUp.addCustomer(firstName.getText(), lastName.getText(), age.getText(), address.getText(), email.getText(), password.getText());
             if(!res) {

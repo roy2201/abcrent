@@ -1,4 +1,4 @@
 package Controllers;
 
-public class RefundPlacedController {
+public class RefundPlacedController extends Navigation{
 }

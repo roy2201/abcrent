@@ -5,45 +5,42 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="486.0" prefWidth="695.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
-   <TableView fx:id="cars" layoutX="202.0" layoutY="144.0" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="515.0" />
-   <VBox alignment="CENTER" layoutX="233.0" layoutY="14.0" prefHeight="120.0" prefWidth="142.0" style="-fx-spacing: 20;">
-      <ComboBox fx:id="make" maxWidth="1.7976931348623157E308" onAction="#loadMake" prefWidth="150.0" promptText="Make" />
-      <ComboBox fx:id="type" maxWidth="1.7976931348623157E308" onAction="#loadTypes" prefHeight="27.0" prefWidth="150.0" promptText="Type" />
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewMatches" text="Search !" />
+<AnchorPane prefHeight="486.0" prefWidth="676.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
+   <TableView fx:id="cars" layoutX="181.0" layoutY="147.0" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="491.0" />
+   <VBox alignment="CENTER" layoutX="190.0" layoutY="14.0" prefHeight="86.0" prefWidth="178.0" style="-fx-spacing: 20;">
+      <ComboBox fx:id="make" onAction="#loadMake" prefHeight="26.0" prefWidth="205.0" promptText="Make" />
+      <ComboBox fx:id="type" onAction="#loadTypes" prefHeight="26.0" prefWidth="195.0" promptText="Type" />
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="304.0" styleClass="hbox">
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#viewMatches" prefHeight="26.0" prefWidth="136.0" text="Search !" />
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#NextPage" prefHeight="26.0" prefWidth="138.0" text="Next" />
+      </HBox>
    </VBox>
-   <Button layoutX="388.0" layoutY="105.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#NextPage" prefHeight="26.0" prefWidth="142.0" text="Next" />
-   <Label fx:id="infoLabel" layoutX="535.0" layoutY="110.0" prefHeight="19.0" prefWidth="177.0" textFill="RED">
+   <Label fx:id="infoLabel" layoutX="489.0" layoutY="112.0" prefHeight="19.0" prefWidth="166.0" textFill="RED">
       <font>
          <Font name="System Bold" size="13.0" />
       </font>
    </Label>
-   <VBox alignment="CENTER" prefHeight="486.0" prefWidth="199.0" styleClass="vbox">
-      <children>
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BrowsePage" prefHeight="40.0" prefWidth="167.0" text="Browse And Rent" textFill="WHITE">
-            <font>
-               <Font name="Open Sans Condensed Medium" size="18.0" />
-            </font>
-         </Button>
-         <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#CheckRentPage" prefHeight="40.0" prefWidth="153.0" text="Check My Rent" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#RefundPage" prefHeight="40.0" prefWidth="123.0" text="Refund" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Profile" prefHeight="42.0" prefWidth="102.0" text=" Profile" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SignOut" prefHeight="26.0" prefWidth="102.0" text="Log Out" textFill="WHITE" />
-      </children>
+   <VBox alignment="CENTER" prefHeight="486.0" prefWidth="166.0" styleClass="vbox">
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BrowsePage" prefHeight="40.0" prefWidth="167.0" text="Browse And Rent" textFill="WHITE" />
+      <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#CheckRentPage" prefHeight="40.0" prefWidth="153.0" text="Check My Rent" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#RefundPage" prefHeight="40.0" prefWidth="123.0" text="Refund" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Profile" prefHeight="42.0" prefWidth="102.0" text=" Profile" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button id="logout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="174.0" text="Log Out" textFill="WHITE" />
    </VBox>
 </AnchorPane>

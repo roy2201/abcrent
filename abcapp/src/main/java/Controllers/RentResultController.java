@@ -1,4 +1,4 @@
 package Controllers;
 
-public class RentResultController {
+public class RentResultController extends Navigation{
 }

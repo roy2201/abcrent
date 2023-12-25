@@ -1,4 +1,4 @@
 package Controllers;
 
-public class SetMileageController {
+public class SetMileageController extends Navigation{
 }

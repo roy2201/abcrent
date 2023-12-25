@@ -3,13 +3,17 @@
 }
 
 .vbox {
-    -fx-spacing: 10;
+    -fx-spacing: 15;
     -fx-background-color: #73879C;
 }
 
+.button:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: derive(#73879C, 20%);
+}
 
 .button {
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-text-fill: white;
     -fx-background-color: #73879C;
     -fx-font-family: 'Open Sans SemiCondensed Medium';
@@ -17,6 +21,32 @@
 
 .vbox .button {
     -fx-font-size: 16px;
+    -fx-text-fill: white;
     -fx-background-color: transparent;
+    -fx-font-family: 'Open Sans SemiCondensed Medium';
 }
 
+
+.vbox .button:hover {
+    -fx-background-color: derive(#73879C, 20%);
+}
+
+#logout {
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-background-color: #E75161;
+    -fx-font-family: 'Open Sans SemiBold';
+}
+
+#logout:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: derive(#E75161, 20%);
+}
+
+.label {
+    -fx-font-weight: bold;
+}
+
+.hbox {
+    -fx-spacing: 15;
+}

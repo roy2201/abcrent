@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CheckRentController">
+<AnchorPane prefHeight="472.0" prefWidth="676.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CheckRentController">
     <VBox alignment="CENTER" layoutX="219.0" layoutY="184.0" prefHeight="167.0" prefWidth="162.0" style="-fx-spacing: 10;">
         <TextField promptText="Input Rent ID" />
         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="249.0" text="Check My Rent" textFill="WHITE" />
@@ -16,13 +16,9 @@
       <children>
          <ListView prefHeight="179.0" prefWidth="162.0" />
       </children></VBox>
-   <VBox alignment="CENTER" prefHeight="486.0" prefWidth="199.0" styleClass="vbox">
+   <VBox alignment="CENTER" prefHeight="486.0" prefWidth="166.0" styleClass="vbox">
       <children>
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BrowsePage" prefHeight="40.0" prefWidth="167.0" text="Browse And Rent" textFill="WHITE">
-            <font>
-               <Font name="Open Sans Condensed Medium" size="18.0" />
-            </font>
-         </Button>
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BrowsePage" prefHeight="40.0" prefWidth="167.0" text="Browse And Rent" textFill="WHITE" />
          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#CheckRentPage" prefHeight="40.0" prefWidth="153.0" text="Check My Rent" textFill="WHITE">
             <font>
                <Font size="18.0" />
@@ -38,6 +34,7 @@
                <Font size="18.0" />
             </font>
          </Button>
+         <Button id="logout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="174.0" text="Log Out" textFill="WHITE" />
       </children>
    </VBox>
 </AnchorPane>

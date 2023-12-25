@@ -6,25 +6,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="445.0" prefWidth="647.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfileController">
-   <TableView layoutX="192.0" layoutY="166.0" prefHeight="298.0" prefWidth="460.0" />
-   <VBox alignment="CENTER" layoutX="231.0" layoutY="-1.0" prefHeight="175.0" prefWidth="156.0" style="-fx-spacing: 5;">
+<AnchorPane prefHeight="479.0" prefWidth="689.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfileController">
+   <TableView layoutX="185.0" layoutY="174.0" prefHeight="298.0" prefWidth="492.0" />
+   <VBox alignment="CENTER" layoutX="247.0" layoutY="-1.0" prefHeight="175.0" prefWidth="156.0" style="-fx-spacing: 5;">
       <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="249.0" text="My Rents" textFill="WHITE" />
       <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="249.0" text="My Requests" textFill="WHITE" />
       <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="249.0" text="My Cards" textFill="WHITE" />
    </VBox>
-   <VBox alignment="CENTER" layoutX="422.0" layoutY="1.0" prefHeight="168.0" prefWidth="144.0" style="-fx-spacing: 5;">
+   <VBox alignment="CENTER" layoutX="451.0" layoutY="3.0" prefHeight="168.0" prefWidth="144.0" style="-fx-spacing: 5;">
       <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="249.0" text="Subscribe" textFill="WHITE" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Change Password" textFill="WHITE" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#AddCard" prefHeight="26.0" prefWidth="156.0" text="Add Card" textFill="WHITE" />
    </VBox>
-   <VBox alignment="CENTER" layoutY="-7.0" prefHeight="486.0" prefWidth="199.0" styleClass="vbox">
+   <VBox alignment="CENTER" layoutY="-1.0" prefHeight="486.0" prefWidth="166.0" styleClass="vbox">
       <children>
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BrowsePage" prefHeight="40.0" prefWidth="167.0" text="Browse And Rent" textFill="WHITE">
-            <font>
-               <Font name="Open Sans Condensed Medium" size="18.0" />
-            </font>
-         </Button>
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BrowsePage" prefHeight="40.0" prefWidth="167.0" text="Browse And Rent" textFill="WHITE" />
          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#CheckRentPage" prefHeight="40.0" prefWidth="153.0" text="Check My Rent" textFill="WHITE">
             <font>
                <Font size="18.0" />
@@ -40,6 +36,7 @@
                <Font size="18.0" />
             </font>
          </Button>
+         <Button id="logout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="174.0" text="Log Out" textFill="WHITE" />
       </children>
    </VBox>
 </AnchorPane>

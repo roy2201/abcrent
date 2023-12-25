@@ -11,11 +11,12 @@
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="382.0" prefWidth="171.0" text="&lt; Back" textFill="WHITE" />
    </VBox>
    <VBox layoutX="276.0" layoutY="81.0" prefHeight="200.0" prefWidth="183.0" style="-fx-spacing: 10;">
-      <TextField promptText="Card Holder Name" />
-      <TextField prefHeight="26.0" prefWidth="161.0" promptText="Card Number" />
-      <TextField promptText="CVV" />
-      <TextField promptText="Exp Date: YYYY-MM-DD" />
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="26.0" prefWidth="180.0" text="Pay" textFill="WHITE" />
-      <Label fx:id="infoLabel" prefHeight="18.0" prefWidth="211.0" text="label" />
+      <TextField fx:id="name" promptText="Card Holder Name" />
+      <TextField fx:id="number" prefHeight="26.0" prefWidth="161.0" promptText="Card Number" />
+      <TextField fx:id="cvv" promptText="CVV" />
+      <TextField fx:id="expDate" promptText="Exp Date: YYYY-MM-DD" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Pay" prefHeight="26.0" prefWidth="180.0" text="Pay" textFill="WHITE" />
+      <Label fx:id="cardLabel" prefHeight="18.0" prefWidth="211.0" />
+      <Label fx:id="payLabel" prefHeight="48.0" prefWidth="183.0" />
    </VBox>
 </AnchorPane>

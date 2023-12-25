@@ -2,21 +2,14 @@ package Controllers;
 
 import Models.NbDays;
 import Models.UserMetaData;
-import com.example.demo.AbcRenting;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.regex.Pattern;
 
-public class NbDaysController {
+public class NbDaysController extends Navigation{
 
     UserMetaData userMetaData = new UserMetaData();
 
@@ -51,6 +44,7 @@ public class NbDaysController {
             float discount   = calculateDiscount(subTotal);
             float total      = calculateTotal(subTotal, discount);
             updateReceipt(subTotal, discount, total);
+            userMetaData.setNbDays(numberOfDays);
         } else {
             infoLabel.setText("Invalid Input");
         }
@@ -96,19 +90,5 @@ public class NbDaysController {
         return Pattern.matches(regex,input);
     }
 
-    public void goToPage(ActionEvent event, String pageName, String pageTitle) {
-        try {
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            Stage newStage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(AbcRenting.class.getResource(pageName));
-            Scene scene = new Scene(fxmlLoader.load());
-            newStage.setTitle(pageTitle);
-            newStage.setScene(scene);
-            newStage.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
 }

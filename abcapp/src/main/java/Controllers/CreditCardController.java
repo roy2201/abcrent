@@ -1,23 +1,16 @@
 package Controllers;
 
 import Models.CreditCard;
-import com.example.demo.AbcRenting;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class CreditCardController {
+public class CreditCardController extends Navigation{
 
     CreditCard cr = new CreditCard();
 
@@ -70,22 +63,6 @@ public class CreditCardController {
                 isNumeric(b.getText()) &&
                 isNumeric(c.getText()) &&
                 isValidDate(d.getText());
-    }
-
-
-    public void goToPage(ActionEvent event, String pageName, String pageTitle) {
-        try {
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            Stage newStage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(AbcRenting.class.getResource(pageName));
-            Scene scene = new Scene(fxmlLoader.load());
-            newStage.setTitle(pageTitle);
-            newStage.setScene(scene);
-            newStage.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
 }

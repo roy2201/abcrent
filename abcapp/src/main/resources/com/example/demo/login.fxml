@@ -11,8 +11,8 @@
 
 <AnchorPane prefHeight="350.0" prefWidth="551.0" styleClass="pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
    <VBox alignment="CENTER" layoutX="261.0" layoutY="82.0" prefHeight="176.0" prefWidth="198.0" style="-fx-spacing: 10;">
-      <TextField fx:id="email" promptText="email" />
-      <PasswordField fx:id="password" promptText="password" />
+      <TextField fx:id="email" promptText="email" styleClass="textField" />
+      <PasswordField fx:id="password" promptText="password" styleClass="textField" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="150.0" styleClass="login" text="Login" textFill="WHITE" />
       <HBox alignment="CENTER" prefHeight="26.0" prefWidth="212.0">
          <Label text="Dont have an account ?" textFill="#9a9a9e" />
