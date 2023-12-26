@@ -8,13 +8,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="472.0" prefWidth="676.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CheckRentController">
-    <VBox alignment="CENTER" layoutX="219.0" layoutY="184.0" prefHeight="167.0" prefWidth="162.0" style="-fx-spacing: 10;">
-        <TextField promptText="Input Rent ID" />
-        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="249.0" text="Check My Rent" textFill="WHITE" />
-    </VBox>
-   <VBox layoutX="405.0" layoutY="123.0" prefHeight="200.0" prefWidth="148.0">
+   <VBox layoutX="405.0" layoutY="123.0" prefHeight="179.0" prefWidth="182.0">
       <children>
-         <ListView prefHeight="179.0" prefWidth="162.0" />
+         <ListView fx:id="rentInfo" prefHeight="179.0" prefWidth="179.0" />
       </children></VBox>
    <VBox alignment="CENTER" prefHeight="486.0" prefWidth="166.0" styleClass="vbox">
       <children>
@@ -35,6 +31,12 @@
             </font>
          </Button>
          <Button id="logout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SignOut" prefHeight="50.0" prefWidth="174.0" text="Log Out" textFill="WHITE" />
+      </children>
+   </VBox>
+   <VBox alignment="BOTTOM_LEFT" layoutX="198.0" layoutY="123.0" prefHeight="179.0" prefWidth="182.0" style="-fx-spacing: 10;">
+      <children>
+           <TextField fx:id="rentID" promptText="Input Rent ID" />
+           <Button mnemonicParsing="false" onAction="#checkRent" prefHeight="26.0" prefWidth="249.0" text="Check My Rent" textFill="WHITE" />
       </children>
    </VBox>
 </AnchorPane>

@@ -3,3 +3,7 @@ userMetaData class is used in this way:
 
 important values such as car id , number of days to rent, user id , ...
 are set using setters by controllers , and queried using getters by models.
+
+1. check above is done well
+
+2. use switch for procedure return values rather than if else.

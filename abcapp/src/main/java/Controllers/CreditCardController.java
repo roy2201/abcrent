@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -34,12 +36,21 @@ public class CreditCardController extends Navigation{
     @FXML
     void addCard() {
         if (validDetails(name, cardNum, cvv, expDate)) {
-            cr.addCard(name.getText(), expDate.getText(), cvv.getText(), cardNum.getText());
+            switch (cr.addCard(name.getText(), expDate.getText(), cvv.getText(), cardNum.getText())) {
+                case 0:
+                    infoLabel.setText("Success");
+                    infoLabel.setTextFill(Color.GREEN);
+                    break;
+                case 1:
+                    infoLabel.setText("Fail");
+                    infoLabel.setTextFill(Color.RED);
+                    break;
+            }
         } else {
             infoLabel.setText("Invalid Information");
+            infoLabel.setTextFill(Color.RED);
         }
     }
-
 
     @FXML
     void back(ActionEvent event) {
