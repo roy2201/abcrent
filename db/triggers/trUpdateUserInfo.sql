@@ -1,14 +1,15 @@
 USE [abcdRent]
 GO
 
-/****** Object:  Trigger [dbo].[trUpdateUserInfo]    Script Date: 12/23/2023 11:25:03 AM ******/
+/****** Object:  Trigger [dbo].[trUpdateUserInfo]    Script Date: 12/26/2023 5:11:12 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-ALTER trigger [dbo].[trUpdateUserInfo]
+
+CREATE trigger [dbo].[trUpdateUserInfo]
 on [dbo].[CUSTOMER]
 after update
 as
@@ -27,5 +28,4 @@ GO
 
 ALTER TABLE [dbo].[CUSTOMER] ENABLE TRIGGER [trUpdateUserInfo]
 GO
-
 
