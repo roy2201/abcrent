@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class RefundController extends CSideBar{
+public class RefundController extends CSideBar implements Drawing{
 
     @FXML
     private TextField email;
@@ -32,20 +32,16 @@ public class RefundController extends CSideBar{
 
             switch(refund.initRefundRequest(Integer.parseInt(rentID.getText()), reason.getText(), email.getText(), number.getText())) {
                 case 1:
-                    infoLabel.setText("Invalid Rent ID");
-                    infoLabel.setTextFill(Color.RED);
+                    showErrorMsg(infoLabel, "Invalid Rent ID");
                     break;
                 case 2:
-                    infoLabel.setText("Rent already refunded");
-                    infoLabel.setTextFill(Color.ORANGE);
+                    showErrorMsg(infoLabel, "Rent Already Refunded");
                     break;
                 case 3:
-                    infoLabel.setText("Invalid card number");
-                    infoLabel.setTextFill(Color.RED);
+                    showErrorMsg(infoLabel, "Invalid Card Number");
                     break;
                 case 0:
-                    infoLabel.setText("Refund Request Initiated");
-                    infoLabel.setTextFill(Color.GREEN);
+                    showSuccessMsg(infoLabel, "Refund Request Initiated");
                     break;
             }
         }

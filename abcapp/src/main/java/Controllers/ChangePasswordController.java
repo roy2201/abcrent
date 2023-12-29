@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class ChangePasswordController extends CSideBar{
+public class ChangePasswordController extends CSideBar implements Drawing{
 
     @FXML
     private TextField pass;
@@ -23,21 +23,17 @@ public class ChangePasswordController extends CSideBar{
         if(!pass.getText().isEmpty()) {
             switch (cp.PasswordChange(pass.getText())) {
                 case 0:
-                    infoLabel.setText("Success");
-                    infoLabel.setTextFill(Color.GREEN);
+                    showSuccessMsg(infoLabel, "Success");
                     break;
                 case 1:
-                    infoLabel.setText("Fail");
-                    infoLabel.setTextFill(Color.RED);
+                    showErrorMsg(infoLabel, "Fail");
                     break;
                 case 2:
-                    infoLabel.setText("Error while changing");
-                    infoLabel.setTextFill(Color.ORANGE);
+                    showErrorMsg(infoLabel, "System Error");
                     break;
             }
         } else {
-            infoLabel.setText("Invalid input");
-            infoLabel.setTextFill(Color.RED);
+            showErrorMsg(infoLabel, "Invalid Input");
         }
     }
 

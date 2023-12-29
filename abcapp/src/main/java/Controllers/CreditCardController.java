@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class CreditCardController extends Navigation{
+public class CreditCardController extends Navigation implements Drawing{
 
     CreditCard cr = new CreditCard();
 
@@ -38,17 +38,18 @@ public class CreditCardController extends Navigation{
         if (validDetails(name, cardNum, cvv, expDate)) {
             switch (cr.addCard(name.getText(), expDate.getText(), cvv.getText(), cardNum.getText())) {
                 case 0:
-                    infoLabel.setText("Success");
-                    infoLabel.setTextFill(Color.GREEN);
+                    showSuccessMsg(infoLabel, "Success");
                     break;
                 case 1:
-                    infoLabel.setText("Fail");
-                    infoLabel.setTextFill(Color.RED);
+                    showErrorMsg(infoLabel, "FAIL");
                     break;
+                case 2:
+                    showErrorMsg(infoLabel, "Invalid Expiry Date");
+                    break;
+
             }
         } else {
-            infoLabel.setText("Invalid Information");
-            infoLabel.setTextFill(Color.RED);
+            showErrorMsg(infoLabel, "Invalid Input");
         }
     }
 

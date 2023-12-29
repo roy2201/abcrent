@@ -19,7 +19,7 @@ import java.util.TimerTask;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class SignUpController extends Navigation{
+public class SignUpController extends Navigation implements Drawing{
 
     @FXML
     private Label SignUpResultLabel;
@@ -53,15 +53,12 @@ public class SignUpController extends Navigation{
         if (!address.getText().isEmpty() && !email.getText().isEmpty() && !password.getText().isEmpty() && !firstName.getText().isEmpty() && !lastName.getText().isEmpty() && isNumeric(age.getText())) {
             boolean res = signUp.addCustomer(firstName.getText(), lastName.getText(), age.getText(), address.getText(), email.getText(), password.getText());
             if(!res) {
-                SignUpResultLabel.setText("You are Signed Up !");
-                SignUpResultLabel.setTextFill(Color.GREEN);
+                showSuccessMsg(SignUpResultLabel, "You are Signed Up !");
             } else {
-                SignUpResultLabel.setText("Email Taken");
-                SignUpResultLabel.setTextFill(Color.RED);
+                showErrorMsg(SignUpResultLabel, "Email Taken");
             }
         } else {
-            SignUpResultLabel.setText("Invalid or Missing Info");
-            SignUpResultLabel.setTextFill(Color.RED);
+            showErrorMsg(SignUpResultLabel, "Invalid or Missing Info");
         }
     }
 }

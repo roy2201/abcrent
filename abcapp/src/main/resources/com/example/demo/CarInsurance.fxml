@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="472.0" prefWidth="742.0" stylesheets="@admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CarInsuranceController">
-   <TableView layoutX="202.0" layoutY="206.0" prefHeight="266.0" prefWidth="554.0" />
-   <HBox alignment="BOTTOM_CENTER" layoutX="212.0" layoutY="28.0" prefHeight="150.0" prefWidth="310.0" style="-fx-spacing: 10;">
+   <TableView layoutX="192.0" layoutY="178.0" prefHeight="295.0" prefWidth="554.0" />
+   <HBox alignment="BOTTOM_CENTER" layoutX="212.0" layoutY="28.0" prefHeight="110.0" prefWidth="310.0" style="-fx-spacing: 10;">
       <VBox alignment="CENTER" prefHeight="204.0" prefWidth="135.0" style="-fx-spacing: 10;">
          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="All Cars" textFill="WHITE" />
          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="All Insurance" textFill="WHITE" />

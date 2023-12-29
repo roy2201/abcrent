@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class PaymentController extends Navigation{
+public class PaymentController extends Navigation implements Drawing{
 
 
     @FXML
@@ -41,26 +41,21 @@ public class PaymentController extends Navigation{
     void Pay() {
         if(payment.isValidCard(name.getText(), number.getText(), cvv.getText(), expDate.getText())) {
 
-            cardLabel.setText("Card Is Valid");
-            cardLabel.setTextFill(Color.GREEN);
+            showSuccessMsg(cardLabel, "Valid Card");
 
             switch (payment.pay(number.getText())) {
                 case 2:
-                    payLabel.setText("Not Enough Balance ...Aborting");
-                    payLabel.setTextFill(Color.RED);
+                    showErrorMsg(payLabel, "Not Enough Balance ...Aborting");
                     break;
                 case 99:
-                    payLabel.setText("Error Occurred ... Aborting");
-                    payLabel.setTextFill(Color.RED);
+                    showErrorMsg(payLabel, "Error Occurred ... Aborting");
                 default:
-                    payLabel.setText("Success");
-                    payLabel.setTextFill(Color.GREEN);
+                    showSuccessMsg(payLabel, "Success");
 
             }
 
         } else {
-            cardLabel.setText("Invalid Card Information");
-            cardLabel.setTextFill(Color.RED);
+            showErrorMsg(cardLabel, "Invalid Card Information");
         }
     }
 

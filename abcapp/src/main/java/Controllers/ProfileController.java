@@ -14,7 +14,7 @@ import javafx.util.Callback;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProfileController extends CSideBar {
+public class ProfileController extends CSideBar implements Drawing{
 
     Profile profile = new Profile();
 
@@ -64,29 +64,5 @@ public class ProfileController extends CSideBar {
 
     }
 
-    @SuppressWarnings("all")
-    void drawTable(ResultSet rs, TableView tableView) {
-        tableView.getColumns().clear();
-        ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
-        try {
-            for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
-                col.setCellValueFactory((Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>) param -> new SimpleStringProperty(param.getValue().get(j).toString()));
-                tableView.getColumns().addAll(col);
-                System.out.println("Column [" + i + "] ");
-            }
-            while (rs.next()) {
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                    row.add(rs.getString(i));
-                }
-                System.out.println("Row [1] added " + row);
-                data.add(row);
-                tableView.setItems(data);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 }
