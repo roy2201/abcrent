@@ -41,11 +41,13 @@ public interface Drawing {
 
 
     public default void showErrorMsg(Label label, String msg) {
+        label.setText("");
         label.setText(msg);
         label.setTextFill(Color.RED);
     }
 
     public default void showSuccessMsg(Label label, String msg) {
+        label.setText("");
         label.setText(msg);
         label.setTextFill(Color.GREEN);
     }

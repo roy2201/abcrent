@@ -7,3 +7,12 @@ are set using setters by controllers , and queried using getters by models.
 1. check above is done well
 
 2. use switch for procedure return values rather than if else.
+
+3. create class validate data to validate dates , integers,
+and other text fields and user input data .
+
+4. check for null in text fields
+
+5. handle nulls in table views
+
+if my requests null it gave error

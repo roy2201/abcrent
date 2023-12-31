@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,11 +15,12 @@
          </font>
       </Button>
    </VBox>
-   <VBox alignment="CENTER" layoutX="291.0" layoutY="59.0" prefHeight="279.0" prefWidth="192.0" style="-fx-spacing: 10;">
-      <TextField promptText="Insurance Provider" />
-      <TextField promptText="Insurance Policy Number" />
-      <TextField promptText="Starting Date: YYYY-MM-DD" />
-      <TextField promptText="Expiry Date: YYYY-DD-MM" />
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add Insurance" textFill="WHITE" />
+   <VBox alignment="CENTER" layoutX="296.0" layoutY="68.0" prefHeight="236.0" prefWidth="192.0" style="-fx-spacing: 10;">
+      <TextField fx:id="insProvider" promptText="Insurance Provider" />
+      <TextField fx:id="insNum" promptText="Insurance Policy Number" />
+      <TextField fx:id="startDate" promptText="Starting Date: YYYY-MM-DD" />
+      <TextField fx:id="expDate" promptText="Expiry Date: YYYY-DD-MM" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#AddInsurance" text="Add Insurance" textFill="WHITE" />
    </VBox>
+   <Label fx:id="infoLabel" layoutX="297.0" layoutY="327.0" prefHeight="18.0" prefWidth="192.0" />
 </AnchorPane>

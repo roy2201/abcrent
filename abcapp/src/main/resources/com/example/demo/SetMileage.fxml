@@ -21,7 +21,7 @@
       <VBox alignment="CENTER" layoutX="313.0" layoutY="143.0" prefHeight="102.0" prefWidth="158.0" style="-fx-spacing: 10;">
          <children>
             <TextField fx:id="mile" promptText="+ Mileage" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SetMile" text="Set" textFill="WHITE" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ConfirmArrival" text="Confim" textFill="WHITE" />
          </children>
       </VBox>
       <Label fx:id="infoLabel" layoutX="313.0" layoutY="279.0" prefHeight="18.0" prefWidth="158.0" />

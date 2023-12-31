@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="472.0" prefWidth="742.0" stylesheets="@admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CarInsuranceController">
-   <TableView layoutX="192.0" layoutY="178.0" prefHeight="295.0" prefWidth="554.0" />
+   <TableView fx:id="cars" layoutX="192.0" layoutY="178.0" prefHeight="295.0" prefWidth="554.0" />
    <HBox alignment="BOTTOM_CENTER" layoutX="212.0" layoutY="28.0" prefHeight="110.0" prefWidth="310.0" style="-fx-spacing: 10;">
       <VBox alignment="CENTER" prefHeight="204.0" prefWidth="135.0" style="-fx-spacing: 10;">
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="All Cars" textFill="WHITE" />
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="All Insurance" textFill="WHITE" />
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Expired" textFill="WHITE" />
-         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Renew" textFill="WHITE" />
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#AllCars" text="All Cars" textFill="WHITE" />
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#AllInsurance" text="All Insurance" textFill="WHITE" />
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ViewExpired" text="Expired" textFill="WHITE" />
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Renew" text="Renew" textFill="WHITE" />
       </VBox>
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#AddInsurance" text="Add New Insurance" textFill="WHITE" />
    </HBox>
@@ -26,4 +27,5 @@
          <Button mnemonicParsing="false" onAction="#ManageRefundsPage" text="Manage Refunds" />
       </children>
    </VBox>
+   <Label fx:id="infoLabel" layoutX="536.0" layoutY="143.0" prefHeight="18.0" prefWidth="170.0" />
 </AnchorPane>

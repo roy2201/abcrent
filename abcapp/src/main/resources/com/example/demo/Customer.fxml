@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="486.0" prefWidth="676.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
-   <TableView fx:id="cars" layoutX="181.0" layoutY="147.0" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="491.0" />
+<AnchorPane prefHeight="486.0" prefWidth="744.0" stylesheets="@customer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
+   <TableView fx:id="cars" layoutX="181.0" layoutY="147.0" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="553.0" />
    <VBox alignment="CENTER" layoutX="190.0" layoutY="14.0" prefHeight="86.0" prefWidth="178.0" style="-fx-spacing: 20;">
       <ComboBox fx:id="make" onAction="#loadMake" prefHeight="26.0" prefWidth="205.0" promptText="Make" />
       <ComboBox fx:id="type" onAction="#loadTypes" prefHeight="26.0" prefWidth="195.0" promptText="Type" />

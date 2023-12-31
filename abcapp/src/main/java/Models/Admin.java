@@ -6,8 +6,6 @@ public class Admin {
 
     Connection con;
 
-    AdminSharedData asd = new AdminSharedData();
-
     public Admin() {
         try {
             Database db = Database.getInstance();
@@ -76,22 +74,6 @@ public class Admin {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public int ConfirmCarArrival(int carID, int asdMile) {
-
-        String query = "Exec spConfirmArrival ?,?,?";
-        try {
-            CallableStatement cst = con.prepareCall(query);
-            cst.setInt(1, carID);
-            cst.setInt(2, asdMile);
-            cst.registerOutParameter(3, Types.INTEGER);
-            cst.executeUpdate();
-            return cst.getInt(3);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
 }

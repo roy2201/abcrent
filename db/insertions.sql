@@ -17,22 +17,17 @@ values
 
 insert into CARPRICING
 values
-(1,getdate(),30),
-(2,getdate(),40),
-(3,getdate(),50),
-(4,getdate(),60),
-(5,getdate(),30),
-(6,getdate(),40),
-(7,getdate(),50),
-(8,getdate(),60),
-(9,getdate(),30),
-(10,getdate(),40),
-(11,getdate(),50),
-(12,getdate(),60),
-(13,getdate(),30),
-(14,getdate(),40);
-
-select * from CAR
-
-
-select * from CARRENTAL
+(58,getdate(),30),
+(59,getdate(),40),
+(60,getdate(),50),
+(61,getdate(),60),
+(62,getdate(),30),
+(63,getdate(),40),
+(64,getdate(),50),
+(65,getdate(),60),
+(66,getdate(),30),
+(67,getdate(),40),
+(68,getdate(),50),
+(69,getdate(),60),
+(70,getdate(),30),
+(71,getdate(),40);

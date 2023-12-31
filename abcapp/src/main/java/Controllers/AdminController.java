@@ -1,12 +1,13 @@
 package Controllers;
 
 import Models.Admin;
-import Models.AdminSharedData;
+import Models.SharedAdminData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
+import org.w3c.dom.UserDataHandler;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -15,13 +16,14 @@ public class AdminController extends ASideBar implements Drawing{
 
     Admin admin = new Admin();
 
-    AdminSharedData asd = new AdminSharedData();
 
     @FXML
     private TableView<?> cars;
 
     @FXML
     Label infoLabel;
+
+    SharedAdminData sad = new SharedAdminData();
 
     @FXML
     void AddCar(ActionEvent event) {
@@ -48,6 +50,17 @@ public class AdminController extends ASideBar implements Drawing{
 
     @FXML
     void ConfirmArrival(ActionEvent event) {
+        cars.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        Object selectedItem = cars.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            if (selectedItem instanceof List<?> selectedItems) {
+                int SelectedCarID = Integer.parseInt((String) selectedItems.getFirst());
+                sad.setSelectedCarID(SelectedCarID);
+                goToPage(event, "SetMileage.fxml", "New Mileage");
+            }
+        } else {
+            showErrorMsg(infoLabel, "Please Select a Car");
+        }
     }
 
     @FXML

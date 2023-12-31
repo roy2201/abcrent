@@ -10,31 +10,31 @@
 
 <AnchorPane prefHeight="483.0" prefWidth="806.0" stylesheets="@admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdvancedControlsController">
    <children>
-      <TableView layoutX="192.0" layoutY="198.0" prefHeight="283.0" prefWidth="614.0" />
-      <HBox layoutX="221.0" layoutY="51.0" prefHeight="126.0" prefWidth="555.0" style="-fx-spacing: 20;">
+      <TableView fx:id="cars" layoutX="192.0" layoutY="198.0" prefHeight="283.0" prefWidth="614.0" />
+      <HBox layoutX="221.0" layoutY="28.0" prefHeight="126.0" prefWidth="555.0" style="-fx-spacing: 20;">
          <children>
             <VBox prefHeight="100.0" prefWidth="163.0" style="-fx-spacing: 10;">
                <children>
                   <Label text="Rented Between" />
-                  <TextField promptText="YYYY-MM-DD" />
-                  <TextField promptText="YYYY-MM-DD" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Check" textFill="WHITE" />
+                  <TextField fx:id="start1" promptText="YYYY-MM-DD" />
+                  <TextField fx:id="end1" promptText="YYYY-MM-DD" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#CheckRentedBetween" text="Check" textFill="WHITE" />
                </children>
             </VBox>
             <VBox prefHeight="158.0" prefWidth="163.0" style="-fx-spacing: 10;">
                <children>
                   <Label text="Cars Made in Total" />
-                  <TextField promptText="Less Than" />
-                  <TextField promptText="Greater Than" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Check" textFill="WHITE" />
+                  <TextField fx:id="less" promptText="Less Than" />
+                  <TextField fx:id="greater" promptText="Greater Than" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#CheckMadeInTotal" text="Check" textFill="WHITE" />
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="163.0" style="-fx-spacing: 10;">
                <children>
                   <Label text="Arrived Between" />
-                  <TextField promptText="YYYY-MM-DD" />
-                  <TextField promptText="YYYY-MM-DD" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Check" textFill="WHITE" />
+                  <TextField fx:id="start2" promptText="YYYY-MM-DD" />
+                  <TextField fx:id="end2" promptText="YYYY-MM-DD" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#CheckArrivedBetween" text="Check" textFill="WHITE" />
                </children>
             </VBox>
          </children>
@@ -48,5 +48,6 @@
             <Button mnemonicParsing="false" onAction="#ManageRefundsPage" text="Manage Refunds" />
          </children>
       </VBox>
+      <Label fx:id="infoLabel" layoutX="304.0" layoutY="171.0" prefHeight="18.0" prefWidth="373.0" />
    </children>
 </AnchorPane>
