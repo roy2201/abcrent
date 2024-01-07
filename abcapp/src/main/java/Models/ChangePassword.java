@@ -20,6 +20,7 @@ public class ChangePassword {
         }
     }
 
+
     public int PasswordChange(String newPassword) {
 
         String query = "exec spChangePassword ?,?,?";
@@ -34,4 +35,5 @@ public class ChangePassword {
             throw new RuntimeException(e);
         }
     }
+
 }

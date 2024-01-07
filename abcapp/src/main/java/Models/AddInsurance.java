@@ -13,7 +13,7 @@ public class AddInsurance {
             Database db = Database.getInstance();
             con = db.connect();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed connecting to database from class AddInsurance",e);
         }
     }
 
@@ -30,7 +30,7 @@ public class AddInsurance {
             cst.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed executing stored procedure spAddInsurance",e);
         }
     }
 }

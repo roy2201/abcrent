@@ -8,6 +8,7 @@ import java.sql.Types;
 public class CreditCard {
 
 
+
     UserMetaData userMetaData = new UserMetaData();
 
     Connection con;
@@ -23,7 +24,6 @@ public class CreditCard {
 
     public int addCard(String name, String expDate, String cvv, String cardNum) {
         String query = "exec spAddVisa ?, ?, ?, ?, ?, ?";
-        boolean result = false;
         try {
             CallableStatement cst = con.prepareCall(query);
             cst.setInt(1, userMetaData.getCustomerId());
@@ -35,7 +35,7 @@ public class CreditCard {
             cst.executeUpdate();
             return cst.getInt(6);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error executing stored procedure for spAddVisa",e);
         }
     }
 

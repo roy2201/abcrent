@@ -27,6 +27,7 @@ public class CarInsurance {
         }
     }
 
+
     public ResultSet getAllInsurance() {
         String query = "select * from vwAllInsurance";
         try {

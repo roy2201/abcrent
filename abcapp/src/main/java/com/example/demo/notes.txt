@@ -1,4 +1,8 @@
 
+
+// TODO: MUST DO FOR GOOD APPLICATION DESIGN
+// TODO: SEARCH FOR LIBRARY FUNCTIONS FOR MORE STRICT VALIDATION
+
 userMetaData class is used in this way:
 
 important values such as car id , number of days to rent, user id , ...
@@ -8,11 +12,22 @@ are set using setters by controllers , and queried using getters by models.
 
 2. use switch for procedure return values rather than if else.
 
-3. create class validate data to validate dates , integers,
-and other text fields and user input data .
+3. create class validate data to validate dates , integers, ... any user entered data
 
 4. check for null in text fields
 
 5. handle nulls in table views
 
-if my requests null it gave error
+6. if my requests null it gave error
+
+7. add error message in runtime exception
+
+8. handle models independent of controllers data =>
+    a. handle controllers : user input strict validation
+    b. handle models : data that enters the database should be consistent
+
+9. View All Refund Requests
+
+10. Renew Insurance by using Expired or All Insurance , Using get(1)
+
+11. highlight which page i am in.

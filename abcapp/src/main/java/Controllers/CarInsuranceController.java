@@ -74,7 +74,7 @@ public class CarInsuranceController extends ASideBar implements Drawing {
     }
 
     @FXML
-    void AllInsurance(ActionEvent event) {
+    void AllInsurance() {
         ResultSet rs = ins.getAllInsurance();
         drawTable(rs, cars);
     }

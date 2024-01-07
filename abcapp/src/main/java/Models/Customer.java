@@ -26,7 +26,7 @@ public class Customer {
             PreparedStatement ps = con.prepareStatement(query);
             return ps.executeQuery();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error executing stored procedure for spAddVisa",e);
         }
     }
 
@@ -36,7 +36,7 @@ public class Customer {
             PreparedStatement ps = con.prepareStatement(query);
             return ps.executeQuery();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error executing stored procedure for spLoadManufacturer",e);
         }
     }
 
@@ -48,7 +48,7 @@ public class Customer {
             ps.setString(2, make);
             return ps.executeQuery();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error executing stored procedure for spViewMatches",e);
         }
     }
 
@@ -59,7 +59,7 @@ public class Customer {
             ps.setInt(1, userMetaData.getCustomerId());
             ps.execute();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error executing stored procedure for spSignOut",e);
         }
     }
 }

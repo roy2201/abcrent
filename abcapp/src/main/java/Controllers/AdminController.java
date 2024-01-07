@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
-import org.w3c.dom.UserDataHandler;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -86,7 +85,7 @@ public class AdminController extends ASideBar implements Drawing{
 
     @FXML
     void RentsInfo() {
-        ResultSet rs = admin.getOverDue();
+        ResultSet rs = admin.getRentsInfo();
         drawTable(rs, cars);
     }
 

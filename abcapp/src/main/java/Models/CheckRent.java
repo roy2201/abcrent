@@ -48,7 +48,7 @@ public class CheckRent{
             Penalty  = cst.getFloat(4);
             return cst.getInt(5);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error Executing Stored Procedure For Rent Info",e);
         }
     }
 

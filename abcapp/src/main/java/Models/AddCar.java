@@ -13,7 +13,7 @@ public class AddCar {
             Database db = Database.getInstance();
             con = db.connect();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed connecting to database from class AddCar",e);
         }
     }
 
@@ -30,7 +30,7 @@ public class AddCar {
             cst.setInt(6, mileage);
             cst.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed executing stored procedure spAddCar",e);
         }
     }
 }

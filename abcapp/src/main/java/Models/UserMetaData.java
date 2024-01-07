@@ -12,6 +12,10 @@ public class UserMetaData {
 
     private static float amountToPay;
 
+    public static void setIsPremium(boolean isPremium) {
+        UserMetaData.isPremium = isPremium;
+    }
+
     public void setCustomerId(int cid) {
         customerId = cid;
     }
@@ -40,11 +44,7 @@ public class UserMetaData {
         return isPremium;
     }
 
-    public void setPremium(boolean prem) {
-        isPremium = prem;
-    }
-
-    public float AmountToPay() {
+    public float getAmountToPay() {
         return amountToPay;
     }
 

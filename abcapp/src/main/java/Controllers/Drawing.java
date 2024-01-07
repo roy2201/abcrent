@@ -15,7 +15,10 @@ import java.sql.ResultSet;
 public interface Drawing {
     @SuppressWarnings("all")
     default void drawTable(ResultSet rs, TableView tableView) {
+
         tableView.getColumns().clear();
+        tableView.getItems().clear();
+
         ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
         try {
             for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
@@ -40,13 +43,13 @@ public interface Drawing {
     }
 
 
-    public default void showErrorMsg(Label label, String msg) {
+    default void showErrorMsg(Label label, String msg) {
         label.setText("");
         label.setText(msg);
         label.setTextFill(Color.RED);
     }
 
-    public default void showSuccessMsg(Label label, String msg) {
+    default void showSuccessMsg(Label label, String msg) {
         label.setText("");
         label.setText(msg);
         label.setTextFill(Color.GREEN);

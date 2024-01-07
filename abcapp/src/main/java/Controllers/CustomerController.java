@@ -86,14 +86,16 @@ public class CustomerController extends CSideBar implements Initializable , Draw
         }
     }
 
+    Object getSelectedItem(TableView<?> tv) {
+        tv.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        return tv.getSelectionModel().getSelectedItem();
+    }
 
     @FXML
     void NextPage(ActionEvent event) {
-        //getting the car id from selected row and setting it to user metadata
-        cars.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        Object selectedItem = cars.getSelectionModel().getSelectedItem();
+        Object selectedItem = getSelectedItem(cars);
         if(selectedItem != null) {
-            if (selectedItem instanceof List<?> selectedItems) {
+           if (selectedItem instanceof List<?> selectedItems) {
                 userMetaData.setCarId(Integer.parseInt((String) selectedItems.getFirst()));
                 System.out.println(userMetaData.getCarId());
             }

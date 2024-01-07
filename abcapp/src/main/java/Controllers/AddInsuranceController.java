@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class AddInsuranceController extends Navigation implements Drawing{
+public class AddInsuranceController extends Navigation implements Drawing {
 
     @FXML
     private TextField expDate;

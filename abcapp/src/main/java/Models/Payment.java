@@ -12,7 +12,6 @@ public class Payment {
     UserMetaData userMetaData = new UserMetaData();
 
 
-
     public Payment() {
         try {
             Database db = Database.getInstance();

@@ -9,17 +9,6 @@ public class ASideBar extends Navigation{
     void CarInsurancePage(ActionEvent event) {
         goToPage(event, "CarInsurance.fxml", "Car Insurance");
     }
-
-    @FXML
-    void ManageCarsPage(ActionEvent event) {
-        goToPage(event, "Admin.fxml", "Manage Cars");
-    }
-
-    @FXML
-    void ManageRefundsPage(ActionEvent event) {
-        goToPage(event, "ManageRefund.fxml", "Manage Refunds");
-    }
-
     @FXML
     void ManageUsersPage(ActionEvent event) {
         goToPage(event, "ManageUser.fxml", "Manage Users");
@@ -28,5 +17,14 @@ public class ASideBar extends Navigation{
     @FXML
     void MoreCarControlsPage(ActionEvent event) {
         goToPage(event, "AdvancedControls.fxml", "Advanced Car Controls");
+    }
+
+    @FXML
+    void ManageRefundsPage(ActionEvent event) {
+        goToPage(event, "ManageRefund.fxml", "Advanced Car Controls");
+    }
+    @FXML
+    void ManageCarsPage(ActionEvent event) {
+        goToPage(event, "ManageCars.fxml", "Advanced Car Controls");
     }
 }
