@@ -25,6 +25,6 @@ public class ASideBar extends Navigation{
     }
     @FXML
     void ManageCarsPage(ActionEvent event) {
-        goToPage(event, "ManageCars.fxml", "Advanced Car Controls");
+        goToPage(event, "Admin.fxml", "Advanced Car Controls");
     }
 }
