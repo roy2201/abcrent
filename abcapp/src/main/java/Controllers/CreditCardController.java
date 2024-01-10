@@ -9,8 +9,6 @@ import javafx.scene.control.TextField;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
-
 public class CreditCardController extends Navigation implements Drawing, Validation{
 
     CreditCard cr = new CreditCard();
@@ -55,17 +53,6 @@ public class CreditCardController extends Navigation implements Drawing, Validat
     @FXML
     void back(ActionEvent event) {
         goToPage(event, "Profile.fxml", "Profile");
-    }
-
-
-    boolean isValidDate(String dateStr) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            dateFormat.parse(dateStr);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
     }
 
 

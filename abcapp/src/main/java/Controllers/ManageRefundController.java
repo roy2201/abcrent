@@ -1,18 +1,14 @@
 package Controllers;
 
 import Models.ManageRefund;
-import Models.SharedAdminData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import javax.security.auth.login.AppConfigurationEntry;
 import java.sql.ResultSet;
 import java.util.List;
-
-import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
 public class ManageRefundController extends ASideBar implements Drawing, Validation{
 

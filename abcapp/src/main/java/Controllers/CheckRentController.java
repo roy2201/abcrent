@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
-
 public class CheckRentController extends CSideBar implements Validation{
 
     @FXML

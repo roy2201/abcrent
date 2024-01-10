@@ -1,9 +1,7 @@
 package Controllers;
 
-import Models.Customer;
 import com.example.demo.AbcRenting;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;

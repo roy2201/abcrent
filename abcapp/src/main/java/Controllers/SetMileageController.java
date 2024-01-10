@@ -7,12 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.sql.CallableStatement;
-import java.sql.SQLException;
-import java.sql.Types;
-
-import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
-
 public class SetMileageController extends Navigation implements Drawing, Validation{
 
     @FXML
