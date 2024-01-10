@@ -39,6 +39,7 @@ public class PaymentController extends Navigation implements Drawing{
 
     @FXML
     void Pay() {
+
         if(payment.isValidCard(name.getText(), number.getText(), cvv.getText(), expDate.getText())) {
 
             showSuccessMsg(cardLabel, "Valid Card");

@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 
 import java.sql.SQLException;
 
-public class LoginController extends Navigation{
+public class LoginController extends Navigation implements Validation{
 
     @FXML
     private TextField email;
@@ -25,10 +25,11 @@ public class LoginController extends Navigation{
 
     @FXML
     void Login(ActionEvent event) {
+
         String enteredEmail = email.getText();
         String enteredPassword = password.getText();
 
-        if (!enteredEmail.isEmpty() && !enteredPassword.isEmpty()) {
+        if (isNonBlank(email, password)) {
             try {
                 int loginResultCode = signIn.Login(enteredEmail, enteredPassword);
 

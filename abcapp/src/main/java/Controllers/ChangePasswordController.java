@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class ChangePasswordController extends CSideBar implements Drawing{
+public class ChangePasswordController extends CSideBar implements Drawing, Validation{
 
     @FXML
     private TextField pass;
@@ -20,7 +20,7 @@ public class ChangePasswordController extends CSideBar implements Drawing{
     @FXML
     void SetPass() {
 
-        if(!pass.getText().isEmpty()) {
+        if(isNonBlank(pass)) {
             switch (cp.PasswordChange(pass.getText())) {
                 case 0:
                     showSuccessMsg(infoLabel, "Success");

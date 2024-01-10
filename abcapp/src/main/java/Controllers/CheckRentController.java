@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class CheckRentController extends CSideBar{
+public class CheckRentController extends CSideBar implements Validation{
 
     @FXML
     private TextField rentID;
@@ -20,7 +20,7 @@ public class CheckRentController extends CSideBar{
     @FXML
     void checkRent() {
 
-        if(isNumeric(rentID.getText())) {
+        if(isPosInt(rentID)) {
 
             rentInfo.getItems().clear();
 

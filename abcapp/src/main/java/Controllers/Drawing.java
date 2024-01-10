@@ -13,6 +13,7 @@ import javafx.util.Callback;
 import java.sql.ResultSet;
 
 public interface Drawing {
+
     @SuppressWarnings("all")
     default void drawTable(ResultSet rs, TableView tableView) {
 

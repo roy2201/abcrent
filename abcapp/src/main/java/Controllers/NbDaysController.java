@@ -9,7 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import java.util.regex.Pattern;
 
-public class NbDaysController extends Navigation{
+public class NbDaysController extends Navigation implements Validation{
 
     UserMetaData userMetaData = new UserMetaData();
 
@@ -36,10 +36,10 @@ public class NbDaysController extends Navigation{
 
     @FXML
     void viewReceipt() {
-        String daysText = nbDays.getText();
-        if (isValidPosInt(daysText)) {
+
+        if (isPosInt(nbDays)) {
             clearLabel(infoLabel);
-            int numberOfDays = Integer.parseInt(daysText);
+            int numberOfDays = Integer.parseInt(nbDays.getText());
             float subTotal   = calculateSubTotal(numberOfDays);
             float discount   = calculateDiscount(subTotal);
             float total      = calculateTotal(subTotal, discount);
@@ -83,12 +83,5 @@ public class NbDaysController extends Navigation{
     private void clearLabel(Label label) {
         label.setText("");
     }
-
-    private boolean isValidPosInt(String input) {
-        //handle very large numbers
-        String regex = "^[1-9]\\d*$";
-        return Pattern.matches(regex,input);
-    }
-
 
 }

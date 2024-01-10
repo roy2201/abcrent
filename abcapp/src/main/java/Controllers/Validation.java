@@ -31,7 +31,7 @@ public interface Validation {
     default boolean isNonBlank(TextField ... tf) {
         for (TextField textField : tf) {
             if (textField == null || textField.getText().trim().isEmpty()) {
-                return false; // Found a blank TextField
+                return false;
             }
         }
         return true;

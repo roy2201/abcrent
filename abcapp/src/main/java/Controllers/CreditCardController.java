@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class CreditCardController extends Navigation implements Drawing{
+public class CreditCardController extends Navigation implements Drawing, Validation{
 
     CreditCard cr = new CreditCard();
 
@@ -70,10 +70,7 @@ public class CreditCardController extends Navigation implements Drawing{
 
 
     boolean validDetails(TextField a, TextField b, TextField c, TextField d) {
-        return  !a.getText().isEmpty() &&
-                isNumeric(b.getText()) &&
-                isNumeric(c.getText()) &&
-                isValidDate(d.getText());
+        return isNonBlank(a, d) && isPosInt(b) && isPosInt(c);
     }
 
 }

@@ -1,18 +1,13 @@
 package Controllers;
 
 import Models.AdvancedControls;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
-import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
-
-public class AdvancedControlsController extends ASideBar implements Drawing{
+public class AdvancedControlsController extends ASideBar implements Drawing, Validation{
 
     @FXML
     private TextField end1;
@@ -45,7 +40,7 @@ public class AdvancedControlsController extends ASideBar implements Drawing{
     @FXML
     void CheckMadeInTotal() {
 
-        if (isNumeric(greater.getText()) || isNumeric(less.getText())) {
+        if (isPosInt(greater) || isPosInt(less)) {
 
             Integer n1 = (!greater.getText().isBlank()) ? Integer.parseInt(greater.getText()) : null;
             Integer n2 = (!less.getText().isBlank()) ? Integer.parseInt(less.getText()) : null;
@@ -78,7 +73,7 @@ public class AdvancedControlsController extends ASideBar implements Drawing{
     @FXML
     void CheckRentedBetween() {
 
-        if(isValidDate(start1.getText()) && isValidDate(end1.getText())) {
+        if(isValidDate(start1) && isValidDate(end1)) {
 
             drawTable(
                     ac.RentedBetween(start1.getText(), end1.getText()),
@@ -92,7 +87,7 @@ public class AdvancedControlsController extends ASideBar implements Drawing{
     @FXML
     void CheckArrivedBetween() {
 
-        if(isValidDate(start2.getText()) && isValidDate(end2.getText())) {
+        if(isValidDate(start2) && isValidDate(end2)) {
 
             drawTable(
                     ac.ArrivedBetween(start2.getText(), end2.getText()),
@@ -104,13 +99,4 @@ public class AdvancedControlsController extends ASideBar implements Drawing{
 
     }
 
-    boolean isValidDate(String dateStr) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            dateFormat.parse(dateStr);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
 }

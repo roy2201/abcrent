@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import java.sql.ResultSet;
 import java.util.List;
 
-public class AdminController extends ASideBar implements Drawing{
+public class AdminController extends ASideBar implements Drawing, Validation{
 
     Admin admin = new Admin();
 

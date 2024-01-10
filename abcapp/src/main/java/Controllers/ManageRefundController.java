@@ -8,12 +8,13 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
+import javax.security.auth.login.AppConfigurationEntry;
 import java.sql.ResultSet;
 import java.util.List;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class ManageRefundController extends ASideBar implements Drawing{
+public class ManageRefundController extends ASideBar implements Drawing, Validation{
 
     @FXML
     private TextField percentage;
@@ -61,6 +62,6 @@ public class ManageRefundController extends ASideBar implements Drawing{
     }
 
     public boolean validPercentage() {
-        return isNumeric(percentage.getText());
+        return isPosInt(percentage);
     }
 }

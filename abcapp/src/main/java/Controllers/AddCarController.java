@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class AddCarController extends Navigation implements Drawing{
+public class AddCarController extends Navigation implements Drawing, Validation {
 
     @FXML
     private TextField color;
@@ -33,7 +33,9 @@ public class AddCarController extends Navigation implements Drawing{
 
     @FXML
     void AddCar() {
+
         if(validateInputs()) {
+
             ac.addCar(
                     license.getText(),
                     color.getText(),
@@ -49,27 +51,7 @@ public class AddCarController extends Navigation implements Drawing{
     }
 
     public boolean validateInputs() {
-        return isValidInput(color) &&
-                isValidInput(license) &&
-                isValidInput(make) &&
-                isValidMileInput() &&
-                isValidInput(model) &&
-                isValidInput(type);
-    }
-
-    private boolean isValidInput(TextField textField) {
-        return !textField.getText().isBlank();
-    }
-
-    private boolean isValidMileInput() {
-            String mileInput = mile.getText().trim();
-
-            try {
-                int mileValue = Integer.parseInt(mileInput);
-                return mileValue > 0;
-            } catch (NumberFormatException e) {
-                return false;
-            }
+        return isNonBlank(color, license, make, model, type) && isPosInt(mile);
     }
 
     @FXML

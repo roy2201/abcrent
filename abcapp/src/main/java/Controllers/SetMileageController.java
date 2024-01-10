@@ -13,7 +13,7 @@ import java.sql.Types;
 
 import static com.microsoft.sqlserver.jdbc.StringUtils.isNumeric;
 
-public class SetMileageController extends Navigation implements Drawing{
+public class SetMileageController extends Navigation implements Drawing, Validation{
 
     @FXML
     private TextField mile;
@@ -27,7 +27,8 @@ public class SetMileageController extends Navigation implements Drawing{
     @FXML
     public void ConfirmArrival() {
 
-        if(isNumeric(mile.getText())) {
+        if(isPosInt(mile)) {
+
             switch(sm.ConfirmArrival(
                     sad.getSelectedCarID(),
                     Integer.parseInt(mile.getText())

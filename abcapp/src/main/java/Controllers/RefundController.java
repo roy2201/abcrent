@@ -4,9 +4,8 @@ import Models.Refund;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 
-public class RefundController extends CSideBar implements Drawing{
+public class RefundController extends CSideBar implements Drawing, Validation{
 
     @FXML
     private TextField email;
@@ -28,7 +27,7 @@ public class RefundController extends CSideBar implements Drawing{
     @FXML
     void PlaceRequest() {
 
-        if(isValidInput(email.getText() ,number.getText() , reason.getText() ,rentID.getText())) {
+        if(isValidInput()) {
 
             switch(refund.initRefundRequest(Integer.parseInt(rentID.getText()), reason.getText(), email.getText(), number.getText())) {
                 case 1:
@@ -48,21 +47,8 @@ public class RefundController extends CSideBar implements Drawing{
 
     }
 
-    private boolean isValidInput(String email, String number, String reason, String rentID) {
-
-        if (email == null || email.trim().isEmpty() ||
-                number == null || number.trim().isEmpty() ||
-                reason == null || reason.trim().isEmpty() ||
-                rentID == null || rentID.trim().isEmpty()) {
-            return false;
-        }
-
-        try {
-            Long.parseLong(rentID);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
+    private boolean isValidInput() {
+        return isNonBlank(email, reason) && isPosInt(number) && isPosInt(rentID);
     }
 
 }

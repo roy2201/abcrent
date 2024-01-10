@@ -30,4 +30,4 @@ are set using setters by controllers , and queried using getters by models.
 
 10. Renew Insurance by using Expired or All Insurance , Using get(1)
 
-11. highlight which page i am in.
+11. highlight which page I am in.

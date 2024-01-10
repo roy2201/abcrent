@@ -37,7 +37,9 @@ public class SignUpController extends Navigation implements Drawing, Validation 
 
     @FXML
     void SignUp() throws Exception {
+
         if (isNonBlank(address, email, password, firstName, lastName) && isPosInt(age)) {
+
             boolean res = signUp.addCustomer(firstName.getText(), lastName.getText(), age.getText(), address.getText(), email.getText(), password.getText());
             if(!res) {
                 showSuccessMsg(SignUpResultLabel, "You are Signed Up !");
