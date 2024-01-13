@@ -51,6 +51,8 @@ public class PaymentController extends Navigation implements Drawing{
                     showErrorMsg(payLabel, "Error Occurred ... Aborting");
                 default:
                     showSuccessMsg(payLabel, "Success");
+                    clearTextField(number, name, expDate, cvv);
+
 
             }
 

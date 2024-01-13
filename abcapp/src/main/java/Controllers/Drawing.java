@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
@@ -54,5 +55,11 @@ public interface Drawing {
         label.setText("");
         label.setText(msg);
         label.setTextFill(Color.GREEN);
+    }
+
+    default void clearTextField(TextField... tf) {
+        for (TextField textField : tf) {
+            textField.setText("");
+        }
     }
 }

@@ -13,6 +13,7 @@
       <TextField fx:id="percentage" promptText="Refund Percentage" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Refund" text="Refund" textFill="WHITE" />
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#PendingRequests" prefHeight="26.0" prefWidth="152.0" text="Pending Requests" textFill="WHITE" />
+      <Button mnemonicParsing="false" onAction="#AllRefunds" prefHeight="26.0" prefWidth="175.0" text="Refund History" />
    </VBox>
    <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="482.0" prefWidth="192.0" styleClass="vbox">
       <Button mnemonicParsing="false" onAction="#ManageCarsPage" text="Manage Cars" />
@@ -21,5 +22,5 @@
       <Button mnemonicParsing="false" onAction="#ManageUsersPage" text="Manage Users" />
       <Button mnemonicParsing="false" onAction="#ManageRefundsPage" text="Manage Refunds" />
    </VBox>
-   <Label fx:id="infoLabel" layoutX="468.0" layoutY="130.0" prefHeight="18.0" prefWidth="217.0" />
+   <Label fx:id="infoLabel" layoutX="433.0" layoutY="153.0" prefHeight="18.0" prefWidth="217.0" />
 </AnchorPane>

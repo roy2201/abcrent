@@ -57,6 +57,10 @@ public class ManageRefundController extends ASideBar implements Drawing, Validat
         }
     }
 
+    public void AllRefunds (){
+        ResultSet rs = mr.getAllRefunds();
+        drawTable(rs, refunds);
+    }
     public boolean validPercentage() {
         return isPosInt(percentage);
     }

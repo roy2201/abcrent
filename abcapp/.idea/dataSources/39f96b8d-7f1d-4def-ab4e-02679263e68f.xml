@@ -35,7 +35,7 @@
 0|root||264|view server state|G
 0|root||265|view server state|G</Grants>
       <PermissionsCheckSum>43840689887</PermissionsCheckSum>
-      <ServerVersion>16.0.1105</ServerVersion>
+      <ServerVersion>16.0.1110</ServerVersion>
     </root>
     <collation id="2" parent="1" name="Albanian_BIN">
       <Description>Albanian, binary sort</Description>

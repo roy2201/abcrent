@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="460.0" prefWidth="810.0" stylesheets="@admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManageUserController">
-   <TableView layoutX="193.0" layoutY="193.0" prefHeight="293.0" prefWidth="614.0" />
+   <TableView fx:id="users" layoutX="193.0" layoutY="193.0" prefHeight="293.0" prefWidth="614.0" />
    <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="487.0" prefWidth="192.0" styleClass="vbox">
       <children>
          <Button mnemonicParsing="false" onAction="#ManageCarsPage" text="Manage Cars" />
@@ -16,4 +16,6 @@
          <Button mnemonicParsing="false" onAction="#ManageRefundsPage" text="Manage Refunds" />
       </children>
    </VBox>
+   <Button layoutX="243.0" layoutY="48.0" mnemonicParsing="false" onAction="#loginHistory" text="Show User Login History" />
+   <Button layoutX="243.0" layoutY="111.0" mnemonicParsing="false" onAction="#loggedIn" prefHeight="26.0" prefWidth="137.0" text="Logged In" />
 </AnchorPane>

@@ -25,6 +25,16 @@ public class ManageRefund {
         }
     }
 
+    public ResultSet getAllRefunds(){
+        String query="select * from vwRefundRequests";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            return ps.executeQuery();
+        } catch (SQLException e){
+            throw new RuntimeException("could not find vwRefundRequests", e);
+        }
+    }
+
     public int DoRefund(int reqID, int percentage) {
 
         String query = "exec spRefund ?,?,?";
