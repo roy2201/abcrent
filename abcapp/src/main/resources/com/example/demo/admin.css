@@ -50,3 +50,11 @@
 .hbox {
     -fx-spacing: 15;
 }
+
+#logout {
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-background-color: #E75161;
+    -fx-font-family: 'Open Sans SemiBold';
+}
+

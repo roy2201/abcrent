@@ -89,4 +89,9 @@ public class AdminController extends ASideBar implements Drawing, Validation{
         drawTable(rs, cars);
     }
 
+    @FXML
+    void Logout(ActionEvent event) {
+        goToPage(event,"login.fxml", "Login");
+    }
+
 }

@@ -13,6 +13,7 @@
       <Button mnemonicParsing="false" onAction="#CarInsurancePage" text="Car Insurance" />
       <Button mnemonicParsing="false" onAction="#ManageUsersPage" text="Manage Users" />
       <Button mnemonicParsing="false" onAction="#ManageRefundsPage" text="Manage Refunds" />
+      <Button id="logout" mnemonicParsing="false" onAction="#Logout" prefHeight="34.0" prefWidth="236.0" stylesheets="@admin.css" text="logout" />
    </VBox>
    <TableView fx:id="cars" layoutX="192.0" layoutY="183.0" prefHeight="278.0" prefWidth="576.0" />
    <VBox alignment="CENTER" layoutX="202.0" prefHeight="158.0" prefWidth="140.0" style="-fx-spacing: 10;">

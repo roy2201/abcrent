@@ -60,7 +60,7 @@ public class AddInsuranceController extends Navigation
 
 
     public boolean validateInputs() {
-        return isValidDate(expDate) &&
+        return  isValidDate(expDate) &&
                 isValidDate(startDate) &&
                 isNonBlank(insProvider) &&
                 isPosInt(insNum);

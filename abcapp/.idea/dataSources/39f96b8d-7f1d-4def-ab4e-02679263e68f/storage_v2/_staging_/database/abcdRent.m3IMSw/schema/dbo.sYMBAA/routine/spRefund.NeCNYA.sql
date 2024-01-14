@@ -1,59 +1,82 @@
-ALTER PROCEDURE [dbo].[spRefund]
-	@RequestID		INT,
-	@Percentage		INT,
-	@ErrorCode		INT	OUTPUT
-AS
-BEGIN
-		
-		IF EXISTS ( SELECT 1 FROM REFUNDREQUESTS WHERE REQUESTID = @RequestID AND [STATUS] = 'ACCEPTED' )
-		BEGIN
-			SET @ErrorCode = 1 --ALREADY REFUNDED
-			RETURN ;
-		END
+Alter Procedure [dbo].[spRefund] @RequestID  int,
+                                  @Percentage int,
+                                  @ErrorCode  int output
+As
+  Begin
+      If Exists (Select 1
+                 From   REFUNDREQUESTS
+                 Where  requestid = @RequestID
+                        And [status] = 'ACCEPTED')
+        Begin
+            Set @ErrorCode = 1 --ALREADY REFUNDED
 
-		IF @Percentage >= 100 OR @Percentage <= 10
-		BEGIN
-			SET @ErrorCode = 2 -- PERCENTAGE RESTRICTION
-			RETURN ;
-		END
+            Return;
+        End
 
-		DECLARE @RentID INT
-		SET @RentID = (SELECT RENTALID FROM REFUNDREQUESTS WHERE REQUESTID = @RequestID)
-		print 'rent id ' + cast(@rentID as varchar(5))
+      If @Percentage >= 100
+          Or @Percentage <= 10
+        Begin
+            Set @ErrorCode = 2 -- PERCENTAGE RESTRICTION
 
-		DECLARE @TOTAL DECIMAL(18,2)
-		SET @Total = (SELECT AMOUNT FROM CARRENTAL WHERE RENTALID = @RentID)
-		print 'total ' + cast(@total as varchar(40))
+            Return;
+        End
 
-		DECLARE @CardID INT
-		SET @CardID= (SELECT CARDID FROM CARRENTAL WHERE RENTALID = @RentID)
-		print 'card id  ' + cast(@cardid as varchar(5))
+      Declare @RentID int
 
-		DECLARE @CardNumber VARCHAR(16)
-		SET @CardNumber = (SELECT CARDNUMBER FROM VISACARD WHERE CARDID = @CardID)
-		print 'card ' + cast(@cardnumber as varchar(5))
+      Set @RentID = (Select rentalid
+                     From   REFUNDREQUESTS
+                     Where  requestid = @RequestID)
 
-		UPDATE REFUNDREQUESTS
-		SET [STATUS]     = 'ACCEPTED',
-			RESOLUTION   = 'REFUNDED',
-			ACCEPTEDDATE = GETDATE()
-		WHERE REQUESTID  = @RequestID and RENTALID = @RentID
+      Print 'rent id ' + Cast(@rentID As varchar(5))
 
+      Declare @TOTAL decimal(18, 2)
 
-		-- ADD AMOUNT REFUNDED COLUMN IN TABLE REFUND REQUESTS OR PERCENTAGE
+      Set @Total = (Select amount
+                    From   CARRENTAL
+                    Where  rentalid = @RentID)
 
-		DECLARE @RefundedAmount DECIMAL(18,2)
-		SET @RefundedAmount = @TOTAL * (CAST(@Percentage AS DECIMAL(18,2))/100)
-		print 'refunded : ' + cast(@refundedamount as varchar(40))
+      Print 'total ' + Cast(@total As varchar(40))
 
+      Declare @CardID int
 
-		UPDATE VISACARD
-		SET BALANCE = BALANCE + @RefundedAmount
-		WHERE CARDNUMBER = @CardNumber
+      Set @CardID= (Select cardid
+                    From   CARRENTAL
+                    Where  rentalid = @RentID)
 
-		SET @ErrorCode = 0 --SUCCESS
-		print 'error code : ' + cast(@errorcode as varchar(5))
+      Print 'card id  ' + Cast(@cardid As varchar(5))
 
-END
+      Declare @CardNumber varchar(16)
+
+      Set @CardNumber = (Select cardnumber
+                         From   VISACARD
+                         Where  cardid = @CardID)
+
+      Print 'card ' + Cast(@cardnumber As varchar(5))
+
+      Update REFUNDREQUESTS
+      Set    [status] = 'ACCEPTED',
+             resolution = 'REFUNDED',
+             accepteddate = Getdate()
+      Where  requestid = @RequestID
+             And rentalid = @RentID
+
+      -- ADD AMOUNT REFUNDED COLUMN IN TABLE REFUND REQUESTS OR PERCENTAGE
+      Declare @RefundedAmount decimal(18, 2)
+
+      Set @RefundedAmount = @TOTAL * ( Cast(@Percentage As decimal(18, 2)) / 100
+                                     )
+
+      Print 'refunded : '
+            + Cast(@refundedamount As varchar(40))
+
+      Update VISACARD
+      Set    balance = balance + @RefundedAmount
+      Where  cardnumber = @CardNumber
+
+      Set @ErrorCode = 0 --SUCCESS
+
+      Print 'error code : '
+            + Cast(@errorcode As varchar(5))
+  End
+
 go
-

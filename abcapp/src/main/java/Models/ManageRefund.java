@@ -37,13 +37,15 @@ public class ManageRefund {
 
     public int DoRefund(int reqID, int percentage) {
 
-        String query = "exec spRefund ?,?,?";
+        String query = "exec spRefund ?,?,?,?";
         try {
             CallableStatement cst = con.prepareCall(query);
             cst.setInt(1, reqID);
             cst.setInt(2, percentage);
-            cst.registerOutParameter(3, Types.INTEGER);
+            cst.registerOutParameter(3, Types.DECIMAL);
+            cst.registerOutParameter(4, Types.INTEGER);
             cst.executeUpdate();
+            System.out.printf("%f", cst.getBigDecimal(3));
             return cst.getInt(3);
         } catch (SQLException e) {
             throw new RuntimeException(e);

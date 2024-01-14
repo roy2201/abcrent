@@ -4,8 +4,9 @@
 }
 
 .button {
-    -fx-background-color: #555555;
+    -fx-background-color: #555444;
     -fx-cursor: HAND;
+    -fx-font-weight: bold;
 }
 
 .signup {
@@ -15,7 +16,7 @@
 
 .vbox {
     -fx-spacing: 15;
-    -fx-background-color:  #555555;
+    -fx-background-color:  #444444;
 }
 
 .vbox .button {
@@ -26,7 +27,7 @@
 }
 
 .vbox .button:hover {
-    -fx-background-color: #333333;
+    -fx-background-color: #444555;
 }
 
 .login:hover {
@@ -40,5 +41,4 @@
 
 .text-field {
     -fx-text-fill: #000000;
-    -fx-font-weight: bold;
 }

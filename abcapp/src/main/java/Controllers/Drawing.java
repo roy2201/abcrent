@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 
 public interface Drawing {
 
-    @SuppressWarnings("all")
+    @SuppressWarnings({"rawtypes","unchecked"})
     default void drawTable(ResultSet rs, TableView tableView) {
 
         tableView.getColumns().clear();
@@ -40,7 +40,7 @@ public interface Drawing {
                 tableView.setItems(data);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -62,4 +62,5 @@ public interface Drawing {
             textField.setText("");
         }
     }
+
 }

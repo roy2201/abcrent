@@ -65,7 +65,7 @@ public class LoginController extends Navigation implements Validation{
 
     @FXML
     void SuperAdmin(ActionEvent event) {
-        goToPage(event, "Admin.fxml", "Manage Cars");
+        goToPage(event, "Security.fxml", "Manage Cars");
     }
 
     @FXML

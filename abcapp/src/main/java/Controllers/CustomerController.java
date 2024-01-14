@@ -94,8 +94,13 @@ public class CustomerController extends CSideBar implements Initializable , Draw
         Object selectedItem = getSelectedItem(cars);
         if(selectedItem != null) {
            if (selectedItem instanceof List<?> selectedItems) {
-                userMetaData.setCarId(Integer.parseInt((String) selectedItems.getFirst()));
-                System.out.println(userMetaData.getCarId());
+               userMetaData.setCarId(Integer.parseInt((String) selectedItems.getFirst()));
+               System.out.println(userMetaData.getCarId());
+               String status = (String) selectedItems.get(7);
+               if (status.compareTo("Rented") == 0) {
+                   showErrorMsg(infoLabel,"sorry, car is rented");
+                   return ;
+               }
             }
         } else {
             showErrorMsg(infoLabel, "Please Select Car");
