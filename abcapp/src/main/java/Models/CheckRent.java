@@ -34,6 +34,8 @@ public class CheckRent{
 
     public int giveRentInfo(int RentID) {
 
+        //TODO : if car is returned (confirm arrival) before its exp date, then display this information
+
         String query = "exec spCheckMyRent ?,?,?,?,?";
 
         try {

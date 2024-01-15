@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.Database;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
@@ -12,7 +13,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class SecurityController implements Initializable {
+public class SecurityController extends Navigation implements Initializable {
     Connection con;
 
     @FXML
@@ -250,5 +251,10 @@ public class SecurityController implements Initializable {
         if(sysAdminBox.isSelected()){
             giveServerRoleHelper("sysAdmin");
         }
+    }
+
+    @FXML
+    public void LogOut(ActionEvent event) {
+        goToPage(event, "login.fxml", "Login");
     }
 }
