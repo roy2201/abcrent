@@ -1,0 +1,198 @@
+/*Tables*/
+
+CREATE TABLE [dbo].[CAR]
+    (
+        [CARID]        [int]          IDENTITY(1, 1) NOT NULL,
+        [LICENSEPLATE] [varchar](20)  NULL,
+        [COLOR]        [varchar](256) NULL,
+        [MANUFACTURER] [varchar](256) NULL,
+        [MODEL]        [varchar](256) NULL,
+        [TYPE]         [varchar](256) NULL,
+        [MILEAGE]      [int]          NULL,
+        [ISRENTED]     [bit]          NULL,
+        CONSTRAINT [PK_CAR]
+            PRIMARY KEY CLUSTERED ([CARID] ASC)
+    )
+
+CREATE TABLE [dbo].[CARINOUT]
+    (
+        [INOUTID]   [int]  IDENTITY(1, 1) NOT NULL,
+        [CARID]     [int]  NOT NULL,
+        [ENTRYTIME] [date] NULL,
+        [EXITTIME]  [date] NULL,
+        CONSTRAINT [PK_CARINOUT]
+            PRIMARY KEY CLUSTERED ([INOUTID] ASC)
+    )
+
+CREATE TABLE [dbo].[CARPRICING]
+    (
+        [CARPRICINGID]  [int]   IDENTITY(1, 1) NOT NULL,
+        [CARID]         [int]   NOT NULL,
+        [EFFECTIVEDATE] [date]  NULL,
+        [PRICEPERDAY]   [float] NULL,
+        CONSTRAINT [PK_CARPRICING]
+            PRIMARY KEY CLUSTERED ([CARPRICINGID] ASC)
+    )
+
+CREATE TABLE [dbo].[CARRENTAL]
+    (
+        [CUSTOMERID]    [int]   NOT NULL,
+        [CARID]         [int]   NOT NULL,
+        [CARDID]        [int]   NULL,
+        [RENTALID]      [int]   IDENTITY(1, 1) NOT NULL,
+        [RENTSTARTDATE] [date]  NULL,
+        [RENTENDDATE]   [date]  NULL,
+        [ISRETURNED]    [bit]   NULL,
+        [RETURNEDDATE]  [date]  NULL,
+        [AMOUNT]        [float] NULL,
+        CONSTRAINT [PK_CARRENTAL]
+            PRIMARY KEY CLUSTERED ([RENTALID] ASC)
+    )
+
+CREATE TABLE [dbo].[CUSTOMER]
+    (
+        [CUSTOMERID]   [int]          IDENTITY(1, 1) NOT NULL,
+        [FIRSTNAME]    [varchar](256) NULL,
+        [LASTNAME]     [varchar](256) NULL,
+        [ADDRESS]      [varchar](256) NULL,
+        [EMAIL]        [varchar](256) NULL,
+        [PASSWORDHASH] [varchar](256) NULL,
+        [AGE]          [int]          NULL,
+        [ISLOGGED]     [bit]          NULL,
+        CONSTRAINT [PK_CUSTOMER]
+            PRIMARY KEY CLUSTERED ([CUSTOMERID] ASC)
+    )
+
+CREATE TABLE [dbo].[INSURANCE]
+    (
+        [INSURANCEID]           [int]            IDENTITY(1, 1) NOT NULL,
+        [CARID]                 [int]            NOT NULL,
+        [INSURANCEPROVIDER]     [varchar](256)   NULL,
+        [INSURANCEPOLICYNUMBER] [varchar](20)    NULL,
+        [STARTINGDATE]          [date]           NULL,
+        [EXPIRYDATE]            [date]           NULL,
+        [COST]                  [decimal](18, 2) NULL,
+        CONSTRAINT [PK_INSURANCE]
+            PRIMARY KEY CLUSTERED ([INSURANCEID] ASC)
+    )
+
+CREATE TABLE [dbo].[LOGINHISTORY]
+    (
+        [LOGINID]         [int]      IDENTITY(1, 1) NOT NULL,
+        [CUSTOMERID]      [int]      NOT NULL,
+        [LOGINTIME]       [datetime] NULL,
+        [LOGOUTTIME]      [datetime] NULL,
+        [SESSIONDURATION] [int]      NULL,
+        CONSTRAINT [PK_LOGINHISTORY]
+            PRIMARY KEY CLUSTERED ([LOGINID] ASC)
+    )
+
+CREATE TABLE [dbo].[REFUNDREQUESTS]
+    (
+        [REQUESTID]    [int]          IDENTITY(1, 1) NOT NULL,
+        [RENTALID]     [int]          NULL,
+        [REQUESTDATE]  [datetime]     NULL,
+        [ACCEPTEDDATE] [datetime]     NULL,
+        [REASON]       [varchar](512) NULL,
+        [STATUS]       [varchar](50)  NULL,
+        [RESOLUTION]   [varchar](50)  NULL,
+        CONSTRAINT [PK_REFUNDREQUESTS]
+            PRIMARY KEY CLUSTERED ([REQUESTID] ASC)
+    )
+
+CREATE TABLE [dbo].[SUBSCRIPTION]
+    (
+        [SUBSCRIPTIONID] [int]  IDENTITY(1, 1) NOT NULL,
+        [CUSTOMERID]     [int]  NOT NULL,
+        [STATDATE]       [date] NULL,
+        [ENDDATE]        [date] NULL,
+        [EXPIRED]        [bit]  NULL,
+        CONSTRAINT [PK_SUBSCRIPTION]
+            PRIMARY KEY CLUSTERED ([SUBSCRIPTIONID] ASC)
+    )
+
+CREATE TABLE [dbo].[VISACARD]
+    (
+        [CARDID]         [int]            IDENTITY(1, 1) NOT NULL,
+        [CUSTOMERID]     [int]            NOT NULL,
+        [CARDHOLDERNAME] [varchar](256)   NULL,
+        [CARDNUMBER]     [varchar](16)    NULL,
+        [CVV]            [varchar](3)     NULL,
+        [EXPIRATIONDATE] [date]           NULL,
+        [BALANCE]        [decimal](18, 2) NULL,
+        CONSTRAINT [PK_VISACARD]
+            PRIMARY KEY CLUSTERED ([CARDID] ASC)
+    )
+
+/*Foriegn Key Constraints*/
+
+ALTER TABLE [dbo].[CARINOUT] WITH CHECK
+ADD CONSTRAINT [FK_CARINOUT_INOUTINFO_CAR]
+    FOREIGN KEY ([CARID])
+    REFERENCES [dbo].[CAR] ([CARID])
+GO
+ALTER TABLE [dbo].[CARINOUT] CHECK CONSTRAINT [FK_CARINOUT_INOUTINFO_CAR]
+GO
+ALTER TABLE [dbo].[CARPRICING] WITH CHECK
+ADD CONSTRAINT [FK_CARPRICI_PRICEINFO_CAR]
+    FOREIGN KEY ([CARID])
+    REFERENCES [dbo].[CAR] ([CARID])
+GO
+ALTER TABLE [dbo].[CARPRICING] CHECK CONSTRAINT [FK_CARPRICI_PRICEINFO_CAR]
+GO
+ALTER TABLE [dbo].[CARRENTAL] WITH CHECK
+ADD CONSTRAINT [FK_CarRental_Car]
+    FOREIGN KEY ([CARID])
+    REFERENCES [dbo].[CAR] ([CARID])
+GO
+ALTER TABLE [dbo].[CARRENTAL] CHECK CONSTRAINT [FK_CarRental_Car]
+GO
+ALTER TABLE [dbo].[CARRENTAL] WITH CHECK
+ADD CONSTRAINT [FK_CarRental_Customer]
+    FOREIGN KEY ([CUSTOMERID])
+    REFERENCES [dbo].[CUSTOMER] ([CUSTOMERID])
+GO
+ALTER TABLE [dbo].[CARRENTAL] CHECK CONSTRAINT [FK_CarRental_Customer]
+GO
+ALTER TABLE [dbo].[CARRENTAL] WITH CHECK
+ADD CONSTRAINT [FK_CarRental_VisaCard]
+    FOREIGN KEY ([CARDID])
+    REFERENCES [dbo].[VISACARD] ([CARDID])
+GO
+ALTER TABLE [dbo].[CARRENTAL] CHECK CONSTRAINT [FK_CarRental_VisaCard]
+GO
+ALTER TABLE [dbo].[INSURANCE] WITH CHECK
+ADD CONSTRAINT [FK_INSURANC_INSURANCE_CAR]
+    FOREIGN KEY ([CARID])
+    REFERENCES [dbo].[CAR] ([CARID])
+GO
+ALTER TABLE [dbo].[INSURANCE] CHECK CONSTRAINT [FK_INSURANC_INSURANCE_CAR]
+GO
+ALTER TABLE [dbo].[LOGINHISTORY] WITH CHECK
+ADD CONSTRAINT [FK_LOGINHIS_LOGININFO_CUSTOMER]
+    FOREIGN KEY ([CUSTOMERID])
+    REFERENCES [dbo].[CUSTOMER] ([CUSTOMERID])
+GO
+ALTER TABLE [dbo].[LOGINHISTORY] CHECK CONSTRAINT [FK_LOGINHIS_LOGININFO_CUSTOMER]
+GO
+ALTER TABLE [dbo].[REFUNDREQUESTS] WITH CHECK
+ADD CONSTRAINT [FK_REFUNDRE_REFERENCE_CARRENTA]
+    FOREIGN KEY ([RENTALID])
+    REFERENCES [dbo].[CARRENTAL] ([RENTALID])
+GO
+ALTER TABLE [dbo].[REFUNDREQUESTS] CHECK CONSTRAINT [FK_REFUNDRE_REFERENCE_CARRENTA]
+GO
+ALTER TABLE [dbo].[SUBSCRIPTION] WITH CHECK
+ADD CONSTRAINT [FK_SUBSCRIP_SUBSCRIBE_CUSTOMER]
+    FOREIGN KEY ([CUSTOMERID])
+    REFERENCES [dbo].[CUSTOMER] ([CUSTOMERID])
+GO
+ALTER TABLE [dbo].[SUBSCRIPTION] CHECK CONSTRAINT [FK_SUBSCRIP_SUBSCRIBE_CUSTOMER]
+GO
+ALTER TABLE [dbo].[VISACARD] WITH CHECK
+ADD CONSTRAINT [FK_VISACARD_HAVEVISA_CUSTOMER]
+    FOREIGN KEY ([CUSTOMERID])
+    REFERENCES [dbo].[CUSTOMER] ([CUSTOMERID])
+GO
+ALTER TABLE [dbo].[VISACARD] CHECK CONSTRAINT [FK_VISACARD_HAVEVISA_CUSTOMER]
+GO

@@ -1,0 +1,23 @@
+USE [master]
+GO
+
+CREATE DATABASE [abcdRent]
+CONTAINMENT = NONE
+ON PRIMARY 
+(
+    NAME = N'abcdRent',
+    FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\abcdRent.mdf',
+    SIZE = 73728KB,
+    MAXSIZE = UNLIMITED,
+    FILEGROWTH = 65536KB
+)
+LOG ON 
+(
+    NAME = N'abcdRent_log',
+    FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\abcdRent_log.ldf',
+    SIZE = 8192KB,
+    MAXSIZE = 2048GB,
+    FILEGROWTH = 65536KB
+)
+WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO

@@ -30,6 +30,11 @@ public class LoginController extends Navigation implements Validation{
         String enteredPassword = password.getText();
 
         if (isNonBlank(email, password)) {
+            if (adminCredentials()) {
+                goToPage(event, "Admin.fxml", "Manage Cars");
+            } else if (superAdminCredentials()) {
+                goToPage(event, "Security.fxml", "DB Security");
+            }
             try {
                 int loginResultCode = signIn.Login(enteredEmail, enteredPassword);
 
@@ -78,4 +83,11 @@ public class LoginController extends Navigation implements Validation{
         goToPage(event, "Admin.fxml", "ManageCars");
     }
 
+    boolean adminCredentials() {
+            return email.getText().compareToIgnoreCase("admin")==0 && password.getText().compareToIgnoreCase("admin")==0;
+    }
+
+    boolean superAdminCredentials() {
+        return email.getText().compareToIgnoreCase("super")==0 && password.getText().compareToIgnoreCase("super")==0;
+    }
 }

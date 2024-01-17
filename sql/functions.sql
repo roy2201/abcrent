@@ -1,11 +1,6 @@
-USE [abcdRent]
-GO
-/****** Object:  UserDefinedFunction [dbo].[fnCalculateTotalPayment]    Script Date: 12/31/2023 12:37:28 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER FUNCTION [dbo].[fnCalculateTotalPayment] (
+/*Views*/
+
+CREATE FUNCTION [dbo].[fnCalculateTotalPayment] (
     @CarId INT,
     @NumDays INT)
 RETURNS FLOAT
@@ -22,11 +17,7 @@ BEGIN
     RETURN @TotalAmount;
 END
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnCardExistForUserId]    Script Date: 12/31/2023 12:37:28 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 CREATE function [dbo].[fnCardExistForUserId] (
     @cid int,
     @cardNumber varchar(16))
@@ -43,11 +34,7 @@ begin
     return @haveCard
 end
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnCheckBalance]    Script Date: 12/31/2023 12:37:28 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 CREATE FUNCTION [dbo].[fnCheckBalance] (@CardNumber VARCHAR(16))
 RETURNS BIT
 AS
@@ -63,11 +50,7 @@ BEGIN
     RETURN @IsEnoughBalance;
 END;
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnCheckPrem]    Script Date: 12/31/2023 12:37:28 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 CREATE FUNCTION [dbo].[fnCheckPrem] (@CustomerID INT)
 RETURNS BIT
 AS
@@ -81,11 +64,7 @@ BEGIN
     RETURN @isPremium
 END
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnIsCarAvailable]    Script Date: 12/31/2023 12:37:28 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 CREATE FUNCTION [dbo].[fnIsCarAvailable] (@CarID INT)
 RETURNS BIT
 AS
@@ -99,12 +78,28 @@ BEGIN
     RETURN COALESCE(@available, 0);
 END;
 GO
-/****** Object:  UserDefinedFunction [dbo].[fnTotalWithPrem]    Script Date: 12/31/2023 12:37:28 AM ******/
-SET ANSI_NULLS ON
+
+
+CREATE function [dbo].[fnReturnedBeforeExp] (
+	@RentID		int
+	)
+RETURNS BIT
+As
+Begin
+
+	if exists (select 1
+			   from CARRENTAL
+			   where RENTENDDATE > RETURNEDDATE
+			   and ISRETURNED = 1
+			   and RENTALID = @RentID )
+			   begin
+					RETURN 0
+			   end
+	RETURN 1
+End
 GO
-SET QUOTED_IDENTIFIER ON
-GO
-alter FUNCTION [dbo].[fnTotalWithPrem] (
+
+CREATE FUNCTION [dbo].[fnTotalWithPrem] (
     @CarId INT,
     @NumDays INT,
     @UserID INT)
@@ -131,11 +126,6 @@ BEGIN
     RETURN @TotalAmount;
 END
 GO
-/****** Object:  UserDefinedFunction [dbo].[IsValidViscardDate]    Script Date: 12/31/2023 12:37:28 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE FUNCTION [dbo].[IsValidViscardDate] (@inputDate DATE)
 RETURNS BIT
@@ -151,4 +141,13 @@ BEGIN
 
     RETURN @isValid;
 END;
+GO
+
+
+CREATE function [dbo].[fnLoadTables] ( @dbname varchar(30) )
+returns table
+return
+	select [name]
+	from sysobjects 
+	where type = 'U'
 GO
