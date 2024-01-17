@@ -1,0 +1,16 @@
+set projloc=C:\Users\Rida\Desktop\abcrent\
+set conn=-S DESKTOP-6CTH65L -U sa -P root123123 -w 300
+cls
+echo Begining on top of MS Sqlserver DBMS engine...
+
+echo create table...
+
+osql %conn% -i %projloc%\sql\tables.sql -o %projloc%\log\tables.log
+
+echo create triggers....
+osql %conn% -i %projloc%\sql\+univdbase-triggers.sql -o %projloc%\log\+univdbase-triggers.log
+
+echo crete indexes....
+osql %conn% -i %projloc%\sql\+univdbase-indexes.sql -o %projloc%\log\+univdbase-indexes.log
+
+echo End of batch file....
