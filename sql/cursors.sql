@@ -3,14 +3,11 @@
 DECLARE @CarID INT
 DECLARE @Revenue FLOAT
 
--- Declare the cursor for the Car table
 DECLARE CarCursor CURSOR FOR
     SELECT CARID FROM dbo.CAR
 
--- Open the cursor
 OPEN CarCursor
 
--- Fetch the first car ID into the variable
 FETCH NEXT FROM CarCursor INTO @CarID
 
 -- Loop through each car
